@@ -2,7 +2,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
-import { transferService, Transfer } from "../lib/transfer-service";
+import { transferService, Transfer } from "../src/lib/transfer-service";
 import toast from "react-hot-toast";
 
 interface TransferContextType {

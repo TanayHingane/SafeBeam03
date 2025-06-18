@@ -3,8 +3,8 @@
 
 import { Toaster } from "react-hot-toast";
 import { TransferProvider } from "../../contexts/TransferContext";
-import SendPanel from "../../components/SendPanel";
-import ReceivePanel from "../../components/ReceivePanel";
+import SendPanel from "../components/SendPanel";
+import ReceivePanel from "../components/ReceivePanel";
 import {
   Rocket,
   Shield,
@@ -102,8 +102,8 @@ export default function Home() {
         </section>
 
         {/* Main Content */}
-        <main className="max-w-6xl mx-auto px-4 pb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <main className="max-w-4xl mx-auto px-4 pb-12">
+          <div className="grid grid-cols-1  gap-8">
             <SendPanel />
             <ReceivePanel />
           </div>

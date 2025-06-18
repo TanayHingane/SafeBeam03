@@ -3,9 +3,10 @@
 
 import React, { useState } from "react";
 import { Download, FileText, File } from "lucide-react";
-import { useTransfer } from "../contexts/TransferContext";
+import { useTransfer } from "../../contexts/TransferContext";
 import { transferService } from "../lib/transfer-service";
 import { motion } from "framer-motion";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "./ui/input-otp";
 
 export default function ReceivePanel() {
   const [transferId, setTransferId] = useState("");
@@ -15,6 +16,7 @@ export default function ReceivePanel() {
   const handleReceive = async () => {
     if (transferId.length === 4) {
       await receiveTransfer(transferId);
+      setTransferId("");
     }
   };
 
@@ -44,7 +46,7 @@ export default function ReceivePanel() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
+    <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-full">
       <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
         Receive Data
       </h2>
@@ -54,14 +56,22 @@ export default function ReceivePanel() {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Enter 4-digit Transfer ID
           </label>
-          <input
+          {/* <input
             type="text"
             value={transferId}
             onChange={(e) => setTransferId(e.target.value.slice(0, 4))}
             placeholder="1234"
             className="w-full p-3 border border-gray-300 rounded-lg text-center text-2xl font-mono tracking-widest focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             maxLength={4}
-          />
+          /> */}
+          <InputOTP maxLength={4} value={transferId} onChange={setTransferId}>
+            <InputOTPGroup>
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+              <InputOTPSlot index={2} />
+              <InputOTPSlot index={3} />
+            </InputOTPGroup>
+          </InputOTP>
         </div>
 
         <button
