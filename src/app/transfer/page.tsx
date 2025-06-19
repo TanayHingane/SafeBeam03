@@ -6,15 +6,17 @@ import { Toaster } from "react-hot-toast";
 
 const page = () => {
   return (
-    <TransferProvider>
-      <Toaster />
-      <div className="max-w-xl mx-auto">
-        <div className="">
-          <SendPanel />
-          <ReceivePanel />
+    <div className="bg-white dark:bg-black">
+      <TransferProvider>
+        <Toaster position="bottom-right" />
+        <div className="max-w-lg mx-auto">
+          <div className="">
+            <SendPanel />
+            <ReceivePanel />
+          </div>
         </div>
-      </div>
-    </TransferProvider>
+      </TransferProvider>
+    </div>
   );
 };
 

@@ -4,7 +4,6 @@
 import React, { useState } from "react";
 import { Upload, Send, FileText } from "lucide-react";
 import { useTransfer } from "../../contexts/TransferContext";
-import { motion } from "framer-motion";
 import { FileUpload } from "./ui/file-upload";
 import { useId, useRef } from "react";
 import { CheckIcon, CopyIcon } from "lucide-react";
@@ -17,14 +16,19 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
+import "ldrs/react/NewtonsCradle.css";
+import { NewtonsCradle } from "ldrs/react";
+import { useTheme } from "next-themes";
 
 export default function SendPanel() {
-  const [activeTab, setActiveTab] = useState<"text" | "file">("text");
+  const [activeTab, setActiveTab] = useState<"text" | "file">("file");
   const [textContent, setTextContent] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [generatedId, setGeneratedId] = useState<string | null>(null);
 
   const { sendText, sendFile, isLoading } = useTransfer();
+  const { resolvedTheme } = useTheme(); // "light" | "dark" | undefined
 
   const id = useId();
   const [copied, setCopied] = useState<boolean>(false);
@@ -56,52 +60,40 @@ export default function SendPanel() {
     }
   };
 
-  // const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setSelectedFile(file);
-  //   }
-  // };
-
   return (
-    <div className="bg-white dark:bg-black rounded-xl shadow-lg p-6 w-full max-w-full">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-        Send Data
-      </h2>
-
-      {/* Tab Selection */}
-      <div className="flex mb-6 bg-gray-100 rounded-lg p-1">
-        <button
-          onClick={() => setActiveTab("text")}
-          className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md transition-all ${
-            activeTab === "text"
-              ? "bg-white shadow-sm text-blue-600"
-              : "text-gray-600 hover:text-gray-800"
-          }`}
-        >
-          <FileText className="w-4 h-4 mr-2" />
-          Text
-        </button>
-        <button
-          onClick={() => setActiveTab("file")}
-          className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md transition-all ${
-            activeTab === "file"
-              ? "bg-white shadow-sm text-blue-600"
-              : "text-gray-600 hover:text-gray-800"
-          }`}
-        >
-          <Upload className="w-4 h-4 mr-2" />
-          File
-        </button>
+    <div
+      className="bg-white dark:bg-black rounded-xl mx-auto p-6 w-full "
+      id="send-data"
+    >
+      <div className="my-4 items-center flex flex-col">
+        <div className="inline-block text-xs font-medium px-3 py-1 bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-blue-300 border border-neutral-300 text-blue-500 rounded-full mb-2">
+          Upload Anonymously
+        </div>
+        <h1 className="text-2xl font-bold dark:text-neutral-50 tracking-tight">
+          Share your data securely
+        </h1>
       </div>
 
-      {/* Content Area */}
-      <motion.div
-        key={activeTab}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2 }}
+      {/* Tab Selection */}
+      <Tabs
+        value={activeTab}
+        onValueChange={(val) => setActiveTab(val as "file" | "text")}
+        className="w-full items-center flex justify-center my-7"
       >
+        <TabsList className="items-center flex justify-center">
+          <TabsTrigger value="file" className="w-[200px] cursor-pointer">
+            <Upload className="h-4 w-4" />
+            File
+          </TabsTrigger>
+          <TabsTrigger value="text" className="w-[200px] cursor-pointer">
+            <FileText className="h-4 w-4" />
+            Text
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+
+      {/* Content Area */}
+      <div key={activeTab}>
         {activeTab === "text" ? (
           <div className="space-y-4">
             <div className="w-full max-w-4xl mx-auto min-h-44 bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg">
@@ -109,17 +101,22 @@ export default function SendPanel() {
                 value={textContent}
                 onChange={(e) => setTextContent(e.target.value)}
                 placeholder="Enter your text here..."
-                className="w-full h-44 p-3 border border-gray-300 border-dashed rounded-lg resize-none text-lg text-black "
-                maxLength={10000}
+                className="w-full h-44 p-5 border border-neutral-200 dark:border-neutral-800 border-dashed rounded-lg resize-none text-base text-black dark:text-white placeholder:text-muted-foreground"
+                maxLength={10000000}
               />
             </div>
             <button
               onClick={handleSendText}
-              disabled={!textContent.trim() || isLoading}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              disabled={!textContent.trim() || !!generatedId}
+              className="cursor-pointer w-full bg-black text-white dark:bg-white dark:text-black py-3 px-4 rounded-lg hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isLoading ? (
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                // <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                <NewtonsCradle
+                  size="45"
+                  speed="1.75"
+                  color={resolvedTheme === "dark" ? "black" : "white"}
+                />
               ) : (
                 <>
                   <Send className="w-4 h-4 mr-2" />
@@ -138,11 +135,16 @@ export default function SendPanel() {
 
             <button
               onClick={handleSendFile}
-              disabled={!selectedFile || isLoading}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              disabled={!selectedFile || !!generatedId}
+              className="cursor-pointer w-full bg-black text-white dark:bg-white dark:text-black py-3 px-4 rounded-lg hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isLoading ? (
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                // <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                <NewtonsCradle
+                  size="45"
+                  speed="1.75"
+                  color={resolvedTheme === "dark" ? "black" : "white"}
+                />
               ) : (
                 <>
                   <Upload className="w-4 h-4 mr-2" />
@@ -152,7 +154,7 @@ export default function SendPanel() {
             </button>
           </div>
         )}
-      </motion.div>
+      </div>
 
       {/* Generated ID Display */}
       {generatedId && (
@@ -172,15 +174,17 @@ export default function SendPanel() {
         //   </p>
         // </motion.div>
 
-        <div className="mt-6 my-2 flex flex-col gap-2">
-          <div className="flex justify-between items-center">
-            <Label className="mb-5">Copy to clipboard</Label>
+        <div className="mt-10 my-2 flex flex-col gap-2 rounded-lg bg-emerald-50  border dark:bg-[#171717]">
+          <div className="flex justify-between items-center p-3 mt-2 px-5">
+            <Label className="items-center justify-center text-base text-emerald-500 dark:text-neutral-100">
+              Copy to clipboard
+            </Label>
             <TooltipProvider delayDuration={0}>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button
                     onClick={handleCopy}
-                    className="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed"
+                    className="text-emerald-400/80 dark:text-neutral-100 hover:text-emerald-400 dark:hover:text-neutral-50 focus-visible:border-ring focus-visible:ring-ring/50 inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed"
                     aria-label={copied ? "Copied" : "Copy to clipboard"}
                     disabled={copied}
                   >
@@ -191,7 +195,7 @@ export default function SendPanel() {
                       )}
                     >
                       <CheckIcon
-                        className="stroke-emerald-500"
+                        className="stroke-green-500"
                         size={16}
                         aria-hidden="true"
                       />
@@ -206,17 +210,17 @@ export default function SendPanel() {
                     </div>
                   </button>
                 </TooltipTrigger>
-                <TooltipContent className="px-2 py-1 text-xs">
+                <TooltipContent className="px-2 py-2 text-xs">
                   Copy to clipboard
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
           </div>
-          <div className="relative">
+          <div className="flex bg-white dark:bg-black p-5 rounded-b-lg border-t">
             <Input
               ref={inputRef}
               id={id}
-              className="text-center"
+              className="text-center text-emerald-500 bg-emerald-50 dark:bg-[#171717] dark:text-neutral-100 h-14"
               type="text"
               defaultValue={generatedId}
               readOnly

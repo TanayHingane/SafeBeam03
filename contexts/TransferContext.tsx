@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 interface TransferContextType {
   isLoading: boolean;
+  isLoadingReceive: boolean;
   currentTransfer: Transfer | null;
   sendText: (text: string) => Promise<string | null>;
   sendFile: (file: File) => Promise<string | null>;
@@ -20,6 +21,7 @@ const TransferContext = createContext<TransferContextType | undefined>(
 
 export function TransferProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingReceive, setIsLoadingReceive] = useState(false);
   const [currentTransfer, setCurrentTransfer] = useState<Transfer | null>(null);
 
   const sendText = useCallback(async (text: string): Promise<string | null> => {
@@ -54,7 +56,7 @@ export function TransferProvider({ children }: { children: React.ReactNode }) {
 
   const receiveTransfer = useCallback(
     async (id: string): Promise<Transfer | null> => {
-      setIsLoading(true);
+      setIsLoadingReceive(true);
       try {
         const transfer = await transferService.getTransfer(id);
         if (transfer) {
@@ -70,7 +72,7 @@ export function TransferProvider({ children }: { children: React.ReactNode }) {
         toast.error("Failed to retrieve transfer");
         return null;
       } finally {
-        setIsLoading(false);
+        setIsLoadingReceive(false);
       }
     },
     []
@@ -84,6 +86,7 @@ export function TransferProvider({ children }: { children: React.ReactNode }) {
     <TransferContext.Provider
       value={{
         isLoading,
+        isLoadingReceive,
         currentTransfer,
         sendText,
         sendFile,

@@ -2,16 +2,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { Download, FileText, File } from "lucide-react";
+import { Download, FileText, File, Copy } from "lucide-react";
 import { useTransfer } from "../../contexts/TransferContext";
 import { transferService } from "../lib/transfer-service";
 import { motion } from "framer-motion";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "./ui/input-otp";
+import "ldrs/react/NewtonsCradle.css";
+import { NewtonsCradle } from "ldrs/react";
+import { useTheme } from "next-themes";
 
 export default function ReceivePanel() {
   const [transferId, setTransferId] = useState("");
-  const { receiveTransfer, currentTransfer, isLoading, clearTransfer } =
-    useTransfer();
+  const { receiveTransfer, currentTransfer, isLoadingReceive } = useTransfer();
+  const { resolvedTheme } = useTheme(); // "light" | "dark" | undefined
 
   const handleReceive = async () => {
     if (transferId.length === 4) {
@@ -46,16 +49,21 @@ export default function ReceivePanel() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-full">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-        Receive Data
-      </h2>
+    <div className="bg-white dark:bg-black mt-5 rounded-xl p-6 w-full max-w-full">
+      <div className="my-4 items-center flex flex-col">
+        {/* <div className="inline-block text-xs font-medium px-3 py-1 bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-blue-300 border border-neutral-300 text-blue-500 rounded-full mb-2">
+          Upload File Anonymously
+        </div> */}
+        <h1 className="text-2xl font-bold dark:text-neutral-50 tracking-tight">
+          Receive File
+        </h1>
+        <p className="text-muted-foreground dark:text-neutral-500 mt-2">
+          Enter the 4-digit transfer ID to receive the file
+        </p>
+      </div>
 
-      <div className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Enter 4-digit Transfer ID
-          </label>
+      <div className="mt-7 mb-5">
+        <div className="mb-7 items-center flex justify-center">
           {/* <input
             type="text"
             value={transferId}
@@ -64,23 +72,32 @@ export default function ReceivePanel() {
             className="w-full p-3 border border-gray-300 rounded-lg text-center text-2xl font-mono tracking-widest focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             maxLength={4}
           /> */}
-          <InputOTP maxLength={4} value={transferId} onChange={setTransferId}>
+          <InputOTP
+            maxLength={4}
+            value={transferId}
+            onChange={setTransferId}
+            className="items-center justify-center bg-white dark:bg-black"
+          >
             <InputOTPGroup>
-              <InputOTPSlot index={0} />
-              <InputOTPSlot index={1} />
-              <InputOTPSlot index={2} />
-              <InputOTPSlot index={3} />
+              <InputOTPSlot index={0} className="h-12 w-12" />
+              <InputOTPSlot index={1} className="h-12 w-12" />
+              <InputOTPSlot index={2} className="h-12 w-12" />
+              <InputOTPSlot index={3} className="h-12 w-12" />
             </InputOTPGroup>
           </InputOTP>
         </div>
 
         <button
           onClick={handleReceive}
-          disabled={transferId.length !== 4 || isLoading}
-          className="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+          disabled={transferId.length !== 4}
+          className="w-full bg-black text-white dark:bg-white dark:text-black py-3 px-4 rounded-lg hover:bg-neutral-800 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
         >
-          {isLoading ? (
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+          {isLoadingReceive ? (
+            <NewtonsCradle
+              size="45"
+              speed="1.75"
+              color={resolvedTheme === "dark" ? "black" : "white"}
+            />
           ) : (
             <>
               <Download className="w-4 h-4 mr-2" />
@@ -93,38 +110,42 @@ export default function ReceivePanel() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg"
+            className="mt-6 p-4 bg-blue-50 dark:bg-[#171717] dark:border-neutral-800 border border-blue-100 rounded-lg"
           >
-            <div className="flex items-center mb-3">
-              {currentTransfer.type === "text" ? (
-                <FileText className="w-5 h-5 text-blue-600 mr-2" />
-              ) : (
-                <File className="w-5 h-5 text-blue-600 mr-2" />
+            <div className="flex justify-between">
+              <div className="flex items-center mb-3">
+                {currentTransfer.type === "text" ? (
+                  <FileText className="w-5 h-5 text-blue-500 dark:text-white mr-2" />
+                ) : (
+                  <File className="w-5 h-5 text-blue-500 dark:text-white mr-2" />
+                )}
+                <span className="font-medium text-blue-500 dark:text-white">
+                  {currentTransfer.type === "text"
+                    ? "Text Message"
+                    : currentTransfer.fileName}
+                </span>
+              </div>
+              {currentTransfer.type === "text" && (
+                <button
+                  onClick={() => copyToClipboard(currentTransfer.content || "")}
+                  className="text-blue-500 dark:text-white flex justify-center items-center text-sm -mt-2 cursor-pointer"
+                >
+                  <Copy className="w-4 h-4 mr-2" />
+                </button>
               )}
-              <span className="font-medium text-blue-800">
-                {currentTransfer.type === "text"
-                  ? "Text Message"
-                  : currentTransfer.fileName}
-              </span>
             </div>
 
             {currentTransfer.type === "text" ? (
               <div className="space-y-3">
-                <div className="bg-white p-3 rounded border max-h-40 overflow-y-auto">
-                  <pre className="whitespace-pre-wrap text-sm text-gray-800">
+                <div className="bg-white dark:bg-black p-3 rounded border max-h-40 overflow-y-auto">
+                  <pre className="whitespace-pre-wrap text-lg font-sans text-gray-800 dark:text-white">
                     {currentTransfer.content}
                   </pre>
                 </div>
-                <button
-                  onClick={() => copyToClipboard(currentTransfer.content || "")}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 text-sm"
-                >
-                  Copy to Clipboard
-                </button>
               </div>
             ) : (
               <div className="space-y-3">
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-600 dark:text-white">
                   <p>
                     Size:{" "}
                     {((currentTransfer.fileSize || 0) / 1024 / 1024).toFixed(2)}{" "}
@@ -134,7 +155,7 @@ export default function ReceivePanel() {
                 </div>
                 <button
                   onClick={handleDownload}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 flex items-center justify-center"
+                  className="w-full cursor-pointer bg-blue-600 dark:bg-white text-white dark:text-black py-2 px-4 rounded hover:bg-blue-700 dark:hover:none flex items-center justify-center"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download File
@@ -142,12 +163,12 @@ export default function ReceivePanel() {
               </div>
             )}
 
-            <button
+            {/* <button
               onClick={clearTransfer}
               className="w-full mt-3 text-gray-600 hover:text-gray-800 text-sm"
             >
               Clear
-            </button>
+            </button> */}
           </motion.div>
         )}
       </div>
