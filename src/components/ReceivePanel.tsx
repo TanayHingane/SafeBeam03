@@ -15,11 +15,19 @@ export default function ReceivePanel() {
   const [transferId, setTransferId] = useState("");
   const { receiveTransfer, currentTransfer, isLoadingReceive } = useTransfer();
   const { resolvedTheme } = useTheme(); // "light" | "dark" | undefined
+  const [isValid, setIsValid] = useState(false);
+  const [expireTimer, setExpireTimer] = useState<NodeJS.Timeout | null>(null);
 
   const handleReceive = async () => {
     if (transferId.length === 4) {
       await receiveTransfer(transferId);
       setTransferId("");
+
+      setIsValid(true); // Set validity true when receive completes
+
+      if (expireTimer) clearTimeout(expireTimer); // clear existing timer
+      const timer = setTimeout(() => setIsValid(false), 10 * 60 * 1000); // 10 minutes
+      setExpireTimer(timer);
     }
   };
 
@@ -49,7 +57,10 @@ export default function ReceivePanel() {
   };
 
   return (
-    <div className="bg-white dark:bg-black mt-5 rounded-xl p-6 w-full max-w-full">
+    <div
+      className="bg-white dark:bg-black mt-5 rounded-xl p-6 w-full max-w-full"
+      id="receive-data"
+    >
       <div className="my-4 items-center flex flex-col">
         {/* <div className="inline-block text-xs font-medium px-3 py-1 bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-blue-300 border border-neutral-300 text-blue-500 rounded-full mb-2">
           Upload File Anonymously
@@ -106,7 +117,7 @@ export default function ReceivePanel() {
           )}
         </button>
 
-        {currentTransfer && (
+        {currentTransfer && isValid && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -163,12 +174,11 @@ export default function ReceivePanel() {
               </div>
             )}
 
-            {/* <button
-              onClick={clearTransfer}
-              className="w-full mt-3 text-gray-600 hover:text-gray-800 text-sm"
-            >
-              Clear
-            </button> */}
+            {currentTransfer && !isValid && (
+              <div className="mt-6 text-center text-red-500 font-medium">
+                ⌛ This transfer link has expired after 10 minutes.
+              </div>
+            )}
           </motion.div>
         )}
       </div>

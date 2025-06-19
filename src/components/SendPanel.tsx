@@ -1,7 +1,7 @@
 // components/SendPanel.tsx
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Upload, Send, FileText } from "lucide-react";
 import { useTransfer } from "../../contexts/TransferContext";
 import { FileUpload } from "./ui/file-upload";
@@ -21,6 +21,29 @@ import "ldrs/react/NewtonsCradle.css";
 import { NewtonsCradle } from "ldrs/react";
 import { useTheme } from "next-themes";
 
+function useCountdown(seconds: number, active: boolean) {
+  const [timeLeft, setTimeLeft] = useState(seconds);
+
+  useEffect(() => {
+    if (!active) return;
+    setTimeLeft(seconds);
+
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [active, seconds]);
+
+  return timeLeft;
+}
+
 export default function SendPanel() {
   const [activeTab, setActiveTab] = useState<"text" | "file">("file");
   const [textContent, setTextContent] = useState("");
@@ -29,6 +52,9 @@ export default function SendPanel() {
 
   const { sendText, sendFile, isLoading } = useTransfer();
   const { resolvedTheme } = useTheme(); // "light" | "dark" | undefined
+
+  const [stopwatchActive, setStopwatchActive] = useState(false);
+  const countdown = useCountdown(600, stopwatchActive); // 10 minutes
 
   const id = useId();
   const [copied, setCopied] = useState<boolean>(false);
@@ -48,6 +74,7 @@ export default function SendPanel() {
     if (id) {
       setGeneratedId(id);
       setTextContent("");
+      setStopwatchActive(true);
     }
   };
 
@@ -57,12 +84,13 @@ export default function SendPanel() {
     if (id) {
       setGeneratedId(id);
       setSelectedFile(null);
+      setStopwatchActive(true);
     }
   };
 
   return (
     <div
-      className="bg-white dark:bg-black rounded-xl mx-auto p-6 w-full "
+      className="bg-white dark:bg-black rounded-xl mx-auto p-6 w-full"
       id="send-data"
     >
       <div className="my-4 items-center flex flex-col">
@@ -156,25 +184,9 @@ export default function SendPanel() {
         )}
       </div>
 
-      {/* Generated ID Display */}
+      {/* Generated ID Display + Stopwatch */}
       {generatedId && (
-        // <motion.div
-        //   initial={{ opacity: 0, scale: 0.9 }}
-        //   animate={{ opacity: 1, scale: 1 }}
-        //   className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg"
-        // >
-        //   <p className="text-sm text-green-700 mb-2">Transfer ID generated:</p>
-        //   <div className="bg-white p-3 rounded border text-center">
-        //     <span className="text-2xl font-mono font-bold text-green-800">
-        //       {generatedId}
-        //     </span>
-        //   </div>
-        //   <p className="text-xs text-green-600 mt-2">
-        //     Share this ID to allow others to receive your data
-        //   </p>
-        // </motion.div>
-
-        <div className="mt-10 my-2 flex flex-col gap-2 rounded-lg bg-emerald-50  border dark:bg-[#171717]">
+        <div className="mt-16 my-2 flex flex-col gap-2 rounded-lg bg-emerald-50 border dark:bg-[#171717]">
           <div className="flex justify-between items-center p-3 mt-2 px-5">
             <Label className="items-center justify-center text-base text-emerald-500 dark:text-neutral-100">
               Copy to clipboard
@@ -216,7 +228,8 @@ export default function SendPanel() {
               </Tooltip>
             </TooltipProvider>
           </div>
-          <div className="flex bg-white dark:bg-black p-5 rounded-b-lg border-t">
+
+          <div className="flex bg-white dark:bg-black p-5 rounded-b-lg border-y">
             <Input
               ref={inputRef}
               id={id}
@@ -226,6 +239,17 @@ export default function SendPanel() {
               readOnly
             />
           </div>
+
+          {/* ⏱ Stopwatch below ID */}
+          {stopwatchActive && countdown > 0 && (
+            <div className="text-sm text-center py-3 -mt-2 text-red-500 dark:text-blue-500 font-semibold">
+              ⏳ Time remaining:{" "}
+              {Math.floor(countdown / 60)
+                .toString()
+                .padStart(2, "0")}
+              :{(countdown % 60).toString().padStart(2, "0")}
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -129,11 +129,11 @@ export function FileUpload({ onChange }: FileUploadProps) {
       )}
 
       {files.length == 0 ? null : (
-        <div className="space-y-2 my-1">
+        <div className="space-y-2 my-3">
           {files.map((file) => (
             <div
               key={file.id}
-              className="bg-background flex items-center shadow-xs justify-between gap-2 rounded-lg border p-2 pe-3"
+              className="bg-background flex items-center shadow-xs justify-between gap-2 rounded-lg  p-2 pe-3"
             >
               <div className="flex items-center gap-3 overflow-hidden">
                 <div className="flex aspect-square size-10 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800 dark:text-white">

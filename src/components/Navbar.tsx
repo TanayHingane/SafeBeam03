@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  FileTextIcon,
-  HomeIcon,
-  LayersIcon,
-  RefreshCcw,
-  UsersIcon,
-} from "lucide-react";
+import { Download, HomeIcon, RefreshCcw, Send, UsersIcon } from "lucide-react";
 
 import ThemeToggle from "@/components/theme-toggle";
 // import { Button } from "@/components/ui/button";
@@ -33,9 +27,9 @@ import { Button } from "./ui/button";
 
 // Navigation links with icons for desktop icon-only navigation
 const navigationLinks = [
-  { href: "#", label: "Dashboard", icon: HomeIcon, active: true },
-  { href: "#", label: "Projects", icon: LayersIcon },
-  { href: "#", label: "Documentation", icon: FileTextIcon },
+  { href: "/", label: "Home", icon: HomeIcon, active: true },
+  { href: "/transfer/#send-data", label: "Send", icon: Send },
+  { href: "/transfer/#receive-data", label: "Receive", icon: Download },
   { href: "#", label: "Team", icon: UsersIcon },
 ];
 
@@ -43,7 +37,7 @@ const navigationLinks = [
 
 export default function Nav() {
   return (
-    <header className="border-b px-4 md:px-60">
+    <header className="fixed top-0 z-50 w-full border-b bg-white dark:bg-black px-4 md:px-60">
       <div className="flex h-16 items-center justify-between gap-4 w-full">
         <a href="#" className="text-primary hover:text-primary/90">
           <Logo />
