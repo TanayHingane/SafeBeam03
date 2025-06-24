@@ -1,20 +1,15 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 
 import { Download, HomeIcon, RefreshCcw, Send, UsersIcon } from "lucide-react";
 
 import ThemeToggle from "@/components/theme-toggle";
-// import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-// import {
-//   Popover,
-//   PopoverContent,
-//   PopoverTrigger,
-// } from "@/components/ui/popover";
 
 import {
   Tooltip,
