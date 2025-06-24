@@ -1,4 +1,4 @@
-import { PlayCircleIcon, ShieldCheck } from "lucide-react";
+import { PlayCircleIcon, ShieldCheck, Star } from "lucide-react";
 
 import { RevealText } from "@/components/gsap/reveal-text";
 import { SpringButton } from "@/components/gsap/spring-button";
@@ -8,9 +8,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const Hero1 = () => {
   return (
-    <div className="container overflow-hidden p-4 sm:p-6 lg:p-12 xl:pt-36 xl:pb-28">
+    <div className="container overflow-hidden my-24 sm:my-20 lg:p-12 xl:my-0 xl:pt-36 xl:pb-12">
       <div className="grid h-full grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-16">
-        <div className="order-2 flex flex-col items-start lg:order-1">
+        <div className="order-1 flex flex-col items-start lg:order-1">
           <div className="bg-muted flex items-center gap-1.5 rounded-full py-1 ps-1 pe-3 text-sm">
             <div className="bg-blue-500 text-white rounded-full p-1">
               <ShieldCheck className="size-4" />
@@ -28,15 +28,12 @@ const Hero1 = () => {
             os when you enter the otp.
           </p>
           <div className="mt-auto flex flex-wrap items-center gap-3 pt-4 sm:pt-6">
-            <a href="/transfer" target="_blank">
+            <a href="/transfer">
               <TextFallButton className=" bg-primary text-primary-foreground cursor-pointer overflow-hidden rounded-full py-2 ps-4 pe-5 font-medium">
                 Get Started
               </TextFallButton>
             </a>
-            <a
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-              target="_blank"
-            >
+            <a href="#" target="_blank">
               <SpringButton
                 shaking={false}
                 className="flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 font-medium shadow-none"
@@ -71,7 +68,13 @@ const Hero1 = () => {
               </Avatar>
             </div>
             <div>
-              <p className="font-medium">Secured</p>
+              <p className="font-medium flex items-center gap-1">
+                <Star className="size-4 text-yellow-500 fill-yellow-500" />
+                <Star className="size-4 text-yellow-500 fill-yellow-500" />
+                <Star className="size-4 text-yellow-500 fill-yellow-500" />
+                <Star className="size-4 text-yellow-500 fill-yellow-500" />
+                <Star className="size-4 text-yellow-500 fill-yellow-500" />
+              </p>
               <p className="text-muted-foreground line-clamp-1 text-sm leading-none max-sm:text-xs">
                 Trusted by teams and businesses
               </p>
@@ -80,7 +83,7 @@ const Hero1 = () => {
         </div>
 
         <TiltCard
-          wrapperClassName="order-1 lg:order-2"
+          wrapperClassName="order-2 lg:block hidden lg:order-2"
           className="bg-foreground/5 rounded-md p-2"
         >
           <img

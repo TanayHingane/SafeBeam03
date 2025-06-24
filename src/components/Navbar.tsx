@@ -30,7 +30,12 @@ const navigationLinks = [
   { href: "/", label: "Home", icon: HomeIcon, active: true },
   { href: "/transfer", label: "Send", icon: Send },
   { href: "/transfer/#receive-data", label: "Receive", icon: Download },
-  { href: "#", label: "Team", icon: UsersIcon },
+  {
+    href: "https://www.linkedin.com/in/tanayhingane",
+    label: "Contact",
+    icon: UsersIcon,
+    target: "_blank",
+  }, // { href: "/contact", label: "Contact", icon: User },
 ];
 
 // Language options
@@ -39,7 +44,7 @@ export default function Nav() {
   return (
     <header className="fixed top-0 z-50 w-full border-b bg-white dark:bg-black px-4 md:px-60">
       <div className="flex h-16 items-center justify-between gap-4 w-full">
-        <a href="#" className="text-primary hover:text-primary/90">
+        <a href="/" className="text-primary hover:text-primary/90">
           <Logo />
         </a>
 
