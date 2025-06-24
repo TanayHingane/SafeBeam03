@@ -17,41 +17,44 @@ import {
 import { formatBytes, useFileUpload } from "@/hooks/use-file-upload";
 import { Button } from "@/components/ui/button";
 
-const getFileIcon = (file: { file: File | { type: string; name: string } }) => {
+const getFileIcon = (file: {
+  file: File | { type?: string; name?: string };
+}) => {
   const fileType = typeof file.file?.type === "string" ? file.file.type : "";
   const fileName = typeof file.file?.name === "string" ? file.file.name : "";
 
   if (
-    (typeof fileType === "string" && fileType.includes("pdf")) ||
-    (typeof fileName === "string" && fileName.endsWith(".pdf")) ||
-    (typeof fileType === "string" && fileType.includes("word")) ||
-    (typeof fileName === "string" &&
-      (fileName.endsWith(".doc") || fileName.endsWith(".docx")))
+    fileType.includes("pdf") ||
+    fileName.endsWith(".pdf") ||
+    fileType.includes("word") ||
+    fileName.endsWith(".doc") ||
+    fileName.endsWith(".docx")
   ) {
     return <FileTextIcon className="size-4 opacity-60" />;
   } else if (
-    (typeof fileType === "string" &&
-      (fileType.includes("zip") || fileType.includes("archive"))) ||
-    (typeof fileName === "string" &&
-      (fileName.endsWith(".zip") || fileName.endsWith(".rar")))
+    fileType.includes("zip") ||
+    fileType.includes("archive") ||
+    fileName.endsWith(".zip") ||
+    fileName.endsWith(".rar")
   ) {
     return <FileArchiveIcon className="size-4 opacity-60" />;
   } else if (
-    (typeof fileType === "string" && fileType.includes("excel")) ||
-    (typeof fileName === "string" &&
-      (fileName.endsWith(".xls") || fileName.endsWith(".xlsx")))
+    fileType.includes("excel") ||
+    fileName.endsWith(".xls") ||
+    fileName.endsWith(".xlsx")
   ) {
     return <FileSpreadsheetIcon className="size-4 opacity-60" />;
-  } else if (typeof fileType === "string" && fileType.includes("video/")) {
+  } else if (fileType.includes("video/")) {
     return <VideoIcon className="size-4 opacity-60" />;
-  } else if (typeof fileType === "string" && fileType.includes("audio/")) {
+  } else if (fileType.includes("audio/")) {
     return <HeadphonesIcon className="size-4 opacity-60" />;
-  } else if (typeof fileType === "string" && fileType.startsWith("image/")) {
+  } else if (fileType.startsWith("image/")) {
     return <ImageIcon className="size-4 opacity-60" />;
   }
 
   return <FileIcon className="size-4 opacity-60" />;
 };
+
 interface FileUploadProps {
   onChange?: (files: File[]) => void;
 }
