@@ -18,8 +18,8 @@ import { formatBytes, useFileUpload } from "@/hooks/use-file-upload";
 import { Button } from "@/components/ui/button";
 
 const getFileIcon = (file: { file: File | { type: string; name: string } }) => {
-  const fileType = file.file.type;
-  const fileName = file.file.name;
+  const fileType = typeof file.file?.type === "string" ? file.file.type : "";
+  const fileName = typeof file.file?.name === "string" ? file.file.name : "";
 
   if (
     (typeof fileType === "string" && fileType.includes("pdf")) ||
