@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SafeBeam",
+  title: "SafeBeam - Beaming files with safety.",
   description: "Beaming files with safety.",
 };
 

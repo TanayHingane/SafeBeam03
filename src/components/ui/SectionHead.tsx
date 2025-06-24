@@ -7,10 +7,10 @@ export default function SectionHeader({
 }) {
   return (
     <>
-      <h2 className="font-sans text-3xl md:text-5xl text-center mt-6 text-blue-500">
+      <h2 className="font-sans text-3xl md:text-5xl text-center mt-6 text-black dark:text-white">
         {title}
       </h2>
-      <p className="text-sans md:text-lg lg:text-xl max-w-md mx-auto text-black mt-4">
+      <p className="font-sans md:text-lg lg:text-sm max-w-md mx-auto text-neutral-500 mt-4">
         {description}
       </p>
     </>

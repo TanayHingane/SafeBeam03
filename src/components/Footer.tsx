@@ -17,9 +17,9 @@ const Footer = () => {
               </Link>
             </div>
             <p className="text-foreground/70 max-w-md mb-6">
-              A modern cloud storage solution that leverages Telegram and
-              Appwrite to provide flexible, secure file storage for all your
-              needs.
+              SafeBeam is a secure and fast way to send and receive text or
+              files using unique 4-digit IDs. It&apos;s perfect for sharing
+              secured data.
             </p>
           </div>
           <div className="col-span-2 md:col-span-1">

@@ -28,7 +28,7 @@ import { Button } from "./ui/button";
 // Navigation links with icons for desktop icon-only navigation
 const navigationLinks = [
   { href: "/", label: "Home", icon: HomeIcon, active: true },
-  { href: "/transfer/#send-data", label: "Send", icon: Send },
+  { href: "/transfer", label: "Send", icon: Send },
   { href: "/transfer/#receive-data", label: "Receive", icon: Download },
   { href: "#", label: "Team", icon: UsersIcon },
 ];

@@ -109,11 +109,17 @@ export default function SendPanel() {
         className="w-full items-center flex justify-center my-7"
       >
         <TabsList className="items-center flex justify-center">
-          <TabsTrigger value="file" className="w-[200px] cursor-pointer">
+          <TabsTrigger
+            value="file"
+            className="min-w-[100px] max-w-[200px] cursor-pointer"
+          >
             <Upload className="h-4 w-4" />
             File
           </TabsTrigger>
-          <TabsTrigger value="text" className="w-[200px] cursor-pointer">
+          <TabsTrigger
+            value="text"
+            className="min-w-[100px] max-w-[200px] cursor-pointer"
+          >
             <FileText className="h-4 w-4" />
             Text
           </TabsTrigger>
