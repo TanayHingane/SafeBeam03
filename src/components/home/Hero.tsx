@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const Hero1 = () => {
   return (
-    <div className="container overflow-hidden my-24 sm:my-20 lg:p-12 xl:my-0 xl:pt-36 xl:pb-12">
+    <div className="container overflow-hidden py-24 sm:py-20 lg:p-12 xl:pt-36 xl:pb-12">
       <div className="grid h-full grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-16">
         <div className="order-1 flex flex-col items-start lg:order-1">
           <div className="bg-muted flex items-center gap-1.5 rounded-full py-1 ps-1 pe-3 text-sm">
@@ -33,7 +33,7 @@ const Hero1 = () => {
                 Get Started
               </TextFallButton>
             </a>
-            <a href="#" target="_blank">
+            <a href="#">
               <SpringButton
                 shaking={false}
                 className="flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 font-medium shadow-none"

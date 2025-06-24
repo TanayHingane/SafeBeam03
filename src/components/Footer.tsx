@@ -4,7 +4,7 @@ import Logo from "./logo";
 
 const Footer = () => {
   return (
-    <footer className="py-12 mt-16 border-t border-t-neutral-300 dark:border-t-neutral-800">
+    <footer className="py-12 bg-white dark:bg-black border-t border-t-neutral-300 dark:border-t-neutral-800">
       <div className="container px-6 lg:max-w-5xl 2xl:max-w-6xl mx-auto">
         <div className="grid grid-cols-4 sm:justify-items-center gap-8 mb-12">
           <div className="md:col-span-2 col-span-4">
@@ -25,8 +25,8 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-1">
             <h4 className="font-medium text-lg mb-4">Product</h4>
             <nav className="flex flex-col space-y-2">
-              <FooterLink href="/public">Public</FooterLink>
-              <FooterLink href="#features">Features</FooterLink>
+              <FooterLink href="/transfer">Send</FooterLink>
+              <FooterLink href="/transfer#receive-data">Receive</FooterLink>
               <FooterLink href="#pricing">Pricing</FooterLink>
             </nav>
           </div>
@@ -34,13 +34,13 @@ const Footer = () => {
           <div>
             <h4 className="font-medium text-lg mb-4">About</h4>
             <nav className="flex flex-col space-y-2">
-              <FooterLink href="https://github.com/Arsenic-01/cloudgram">
-                GitHub
+              <FooterLink href="https://linkedin.com/in/tanayhingane">
+                LinkedIn
               </FooterLink>
-              <FooterLink href="https://vedantbhor.vercel.app/">
+              <FooterLink href="https://tanayhingan03.vercel.app/">
                 Portfolio
               </FooterLink>
-              <FooterLink href="mailto:vedantbhorofficial@gmail.com?subject=Hello%20I%27m%20____%20from%20____%20company&body=I%20want%20to%20start%20a%20new%20project%20about%20____%20and%20time%20duration%20is%20___%20days.">
+              <FooterLink href="mailto:tanayhingane03@gmail.com?subject=Hello%20I%27m%20____%20from%20____%20company&body=I%20want%20to%20start%20a%20new%20project%20about%20____%20and%20time%20duration%20is%20___%20days.">
                 Contact
               </FooterLink>
             </nav>

@@ -7,13 +7,16 @@ import SectionHeader from "../ui/SectionHead";
 
 const Pricing1 = () => {
   return (
-    <div className="bg-white dark:bg-black container py-7 sm:py-12 lg:pt-24 lg:pb-16">
+    <div
+      className="bg-white dark:bg-black container py-7 sm:py-12 lg:pt-24 lg:pb-16"
+      id="pricing"
+    >
       <SectionHeader
         title="Choose Your Storage Type"
         description="We offer two powerful storage solutions to meet your specific needs."
       />
       <StaggerOnScroll
-        effect="slideInRight"
+        effect="scale"
         className="mt-8 mb-12 grid h-full grid-cols-1 gap-10 md:gap-5 sm:mt-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-2 lg:gap-12 lg:px-12"
       >
         <div className="bg-background flex flex-col rounded-md border p-6">
@@ -117,7 +120,10 @@ const Pricing1 = () => {
           Ready to bring your next project to life? Let&apos;s connect and
           discuss how I can help you achieve your goals.
         </p>
-        <a href="https://www.linkedin.com/in/tanayhingane" target="_blank">
+        <a
+          href="mailto:tanayhingane03@gmail.com?subject=Hello%20I%27m%20____%20from%20____%20company&body=I%20want%20to%20start%20a%20new%20project%20about%20____%20and%20time%20duration%20is%20___%20days."
+          target="_blank"
+        >
           <Button className="mt-3">Contact Me</Button>
         </a>
       </div>

@@ -4,12 +4,10 @@ import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
 
 export default function Home() {
   return (
-    <div className="bg-white dark:bg-black">
-      <div className="mx-8 lg:mx-60">
-        <Hero1 />
-        <HeroVideoDialog videoSrc={""} thumbnailSrc={"/dashboard.png"} />
-        <Pricing1 />
-      </div>
+    <div className=" pb-16 px-8 lg:px-60 lg:pb-10 bg-white dark:bg-black">
+      <Hero1 />
+      <HeroVideoDialog videoSrc={""} thumbnailSrc={"/dashboard.png"} />
+      <Pricing1 />
     </div>
   );
 }
