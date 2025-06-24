@@ -46,7 +46,7 @@ const getFileIcon = (file: { file: File | { type: string; name: string } }) => {
     return <VideoIcon className="size-4 opacity-60" />;
   } else if (fileType.includes("audio/")) {
     return <HeadphonesIcon className="size-4 opacity-60" />;
-  } else if (fileType.startsWith("image/")) {
+  } else if (typeof fileType === "string" && fileType.startsWith("image/")) {
     return <ImageIcon className="size-4 opacity-60" />;
   }
   return <FileIcon className="size-4 opacity-60" />;

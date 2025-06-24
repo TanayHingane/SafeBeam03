@@ -109,13 +109,18 @@ export const useFileUpload = (
         }`;
 
         const isAccepted = acceptedTypes.some((type) => {
-          if (type.startsWith(".")) {
+          if (typeof type === "string" && type.startsWith(".")) {
             return fileExtension.toLowerCase() === type.toLowerCase();
           }
-          if (type.endsWith("/*")) {
+
+          if (typeof type === "string" && type.endsWith("/*")) {
             const baseType = type.split("/")[0];
-            return fileType.startsWith(`${baseType}/`);
+            return (
+              typeof fileType === "string" &&
+              fileType.startsWith(`${baseType}/`)
+            );
           }
+
           return fileType === type;
         });
 
@@ -157,6 +162,7 @@ export const useFileUpload = (
         if (
           file.preview &&
           file.file instanceof File &&
+          typeof file.file.type === "string" &&
           file.file.type.startsWith("image/")
         ) {
           URL.revokeObjectURL(file.preview);
@@ -295,6 +301,7 @@ export const useFileUpload = (
           fileToRemove &&
           fileToRemove.preview &&
           fileToRemove.file instanceof File &&
+          typeof fileToRemove.file.type === "string" &&
           fileToRemove.file.type.startsWith("image/")
         ) {
           URL.revokeObjectURL(fileToRemove.preview);
