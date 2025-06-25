@@ -60,7 +60,7 @@ interface FileUploadProps {
 }
 
 export function FileUpload({ onChange }: FileUploadProps) {
-  const maxSize = 100 * 1024 * 1024; // 100MB
+  const maxSize = 50 * 1024 * 1024; // 50MB
   const maxFiles = 1;
 
   const [

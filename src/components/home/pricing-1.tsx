@@ -45,11 +45,11 @@ const Pricing1 = () => {
             </li>
             <li className="flex items-start gap-2">
               <CircleCheck className="w-4 h-4 mt-1 text-green-500" />
-              <span>Upto 700 MB</span>
+              <span>Upto 50 MB</span>
             </li>
             <li className="flex items-start gap-2">
               <XCircle className="w-4 h-4 mt-1 text-red-500" />
-              <span>No storage</span>
+              <span>No Unlimited storage</span>
             </li>
           </ul>
           <div className="mt-auto pt-5">
