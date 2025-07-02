@@ -26,7 +26,7 @@ const navigationLinks = [
   { href: "/transfer", label: "Send", icon: Send },
   { href: "/transfer/#receive-data", label: "Receive", icon: Download },
   {
-    href: "https://www.linkedin.com/in/tanayhingane",
+    href: "https://tanayhingane03.vercel.app",
     label: "Contact",
     icon: UsersIcon,
     target: "_blank",

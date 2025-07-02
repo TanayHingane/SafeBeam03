@@ -53,14 +53,16 @@ const Pricing1 = () => {
             </li>
           </ul>
           <div className="mt-auto pt-5">
-            <SpringButton
-              scale={0.95}
-              shaking={false}
-              className="hover:bg-muted flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border py-2"
-            >
-              <RocketIcon className="size-4.5" />
-              Start for Free
-            </SpringButton>
+            <a href="/transfer">
+              <SpringButton
+                scale={0.95}
+                shaking={false}
+                className="hover:bg-muted flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border py-2"
+              >
+                <RocketIcon className="size-4.5" />
+                Start for Free
+              </SpringButton>
+            </a>
           </div>
         </div>
         <div className="bg-background relative flex flex-col rounded-md border p-6 shadow">
@@ -103,7 +105,7 @@ const Pricing1 = () => {
             <SpringButton
               scale={0.95}
               shaking={false}
-              className="bg-primary text-primary-foreground flex w-full cursor-pointer items-center justify-center gap-2 rounded-md py-2"
+              className="bg-primary cursor-not-allowed text-primary-foreground flex w-full items-center justify-center gap-2 rounded-md py-2"
               disabled
             >
               <ZapIcon className="size-4.5" />

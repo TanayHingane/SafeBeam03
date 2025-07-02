@@ -62,9 +62,6 @@ export default function ReceivePanel() {
       id="receive-data"
     >
       <div className="my-4 items-center flex flex-col">
-        {/* <div className="inline-block text-xs font-medium px-3 py-1 bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-blue-300 border border-neutral-300 text-blue-500 rounded-full mb-2">
-          Upload File Anonymously
-        </div> */}
         <h1 className="text-2xl font-bold dark:text-neutral-50 tracking-tight">
           Receive File
         </h1>
