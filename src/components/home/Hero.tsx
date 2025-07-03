@@ -67,7 +67,7 @@ const Hero1 = () => {
                 <AvatarFallback>VB</AvatarFallback>
               </Avatar>
             </div>
-            <div className="flex flex-col justify-start gap-3">
+            <div className="flex flex-col justify-start gap-1">
               <div className="font-medium flex items-center gap-1">
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
