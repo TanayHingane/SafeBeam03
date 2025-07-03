@@ -64,20 +64,20 @@ const Hero1 = () => {
                   src="https://github.com/Arsenic-01.png"
                   alt="@shadcn"
                 />
-                <AvatarFallback>VD</AvatarFallback>
+                <AvatarFallback>VB</AvatarFallback>
               </Avatar>
             </div>
-            <div className="gap-3">
-              <p className="font-medium flex items-center gap-1">
+            <div className="flex flex-col justify-start gap-3">
+              <div className="font-medium flex items-center gap-1">
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
-              </p>
-              <p className="text-muted-foreground line-clamp-1 text-sm leading-none max-sm:text-xs">
+              </div>
+              <div className="text-muted-foreground line-clamp-1 text-sm leading-none max-sm:text-xs">
                 Trusted and Verified by Users!
-              </p>
+              </div>
             </div>
           </div>
         </div>
