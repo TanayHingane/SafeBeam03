@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const Hero1 = () => {
   return (
-    <div className="container overflow-hidden py-24 sm:pt-20 sm:pb-5 lg:p-12 xl:pt-36 xl:pb-12">
+    <div className="container overflow-hidden py-24 sm:py-20 lg:p-12 xl:pt-36 xl:pb-12">
       <div className="grid h-full grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-16">
         <div className="order-1 flex flex-col items-start lg:order-1 space-y-3">
           <div className="bg-muted flex items-center gap-1.5 rounded-full py-1 ps-1 pe-3 text-sm">
@@ -67,7 +67,7 @@ const Hero1 = () => {
                 <AvatarFallback>VD</AvatarFallback>
               </Avatar>
             </div>
-            <div>
+            <div className="gap-3">
               <p className="font-medium flex items-center gap-1">
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
                 <Star className="size-4 text-yellow-500 fill-yellow-500" />
