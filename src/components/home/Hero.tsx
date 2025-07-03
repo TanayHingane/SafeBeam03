@@ -33,7 +33,7 @@ const Hero1 = () => {
                 Get Started
               </TextFallButton>
             </a>
-            <a href="#">
+            <a href="https://youtube.com/@Tanay.H03">
               <SpringButton
                 shaking={false}
                 className="flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 font-medium shadow-none"
@@ -47,24 +47,24 @@ const Hero1 = () => {
             <div className="flex -space-x-4 *:transition-all *:duration-300 *:hover:-translate-y-4">
               <Avatar>
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  src="https://github.com/Arsenic-01.png"
                   alt="@shadcn"
                 />
                 <AvatarFallback>VD</AvatarFallback>
               </Avatar>
               <Avatar>
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  src="https://github.com/AdarshSanskar.png"
                   alt="@shadcn"
                 />
                 <AvatarFallback>AT</AvatarFallback>
               </Avatar>
               <Avatar>
                 <AvatarImage
-                  src="https://github.com/shadcn.png"
+                  src="https://github.com/Sushrut2007.png"
                   alt="@shadcn"
                 />
-                <AvatarFallback>AA</AvatarFallback>
+                <AvatarFallback>SS</AvatarFallback>
               </Avatar>
             </div>
             <div>
