@@ -22,10 +22,10 @@ const Hero1 = () => {
             Transfer your data with OTP verification
           </RevealText>
           <p className="text-foreground/80 mt-3 max-w-lg max-sm:text-sm lg:mt-5">
-            SmartBeam is a reliable and secure transfer platform, where you can
-            send any type of file and it will generate an otp which will be
-            active for only 10 min. you can recieve the file from any device any
-            os when you enter the otp.
+            Send files or text instantly and securely.
+SafeBeam generates a one-time OTP valid for 10 minutes only.
+No sign-up, no device limits — works across all platforms.
+Supports all file types and quick text notes.
           </p>
           <div className="mt-auto flex flex-wrap items-center gap-3 pt-4 sm:pt-6">
             <a href="/transfer">
