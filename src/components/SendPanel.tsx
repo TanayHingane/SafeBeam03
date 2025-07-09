@@ -54,7 +54,7 @@ export default function SendPanel() {
   const { resolvedTheme } = useTheme(); // "light" | "dark" | undefined
 
   const [stopwatchActive, setStopwatchActive] = useState(false);
-  const countdown = useCountdown(600, stopwatchActive); // 10 minutes
+  const countdown = useCountdown(590, stopwatchActive); // 10 minutes
 
   const id = useId();
   const [copied, setCopied] = useState<boolean>(false);
@@ -135,7 +135,7 @@ export default function SendPanel() {
                 value={textContent}
                 onChange={(e) => setTextContent(e.target.value)}
                 placeholder="Enter your text here..."
-                className="w-full h-44 p-5 border border-neutral-200 dark:border-neutral-800 border-dashed rounded-lg resize-none text-base text-black dark:text-white placeholder:text-muted-foreground"
+                className="w-full h-44 p-5 border-2 border-neutral-200 dark:border-neutral-800 border-dashed rounded-lg resize-none text-base text-black dark:text-white placeholder:text-muted-foreground"
                 maxLength={10000000}
               />
             </div>

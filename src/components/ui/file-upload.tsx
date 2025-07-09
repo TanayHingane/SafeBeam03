@@ -94,7 +94,7 @@ export function FileUpload({ onChange }: FileUploadProps) {
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         data-dragging={isDragging || undefined}
-        className="border-input hover:bg-accent/50 data-[dragging=true]:bg-accent/50 flex min-h-40 flex-col items-center justify-center rounded-xl border border-dashed p-4 transition-colors"
+        className="border-input hover:bg-accent/50 data-[dragging=true]:bg-accent/50 flex min-h-40 flex-col items-center justify-center rounded-xl border-2 border-dashed p-4 transition-colors"
       >
         <input
           {...getInputProps()}
