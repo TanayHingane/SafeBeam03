@@ -1,8 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SafeBeam
 
-## Getting Started
+**SafeBeam** is a modern, secure, and user-friendly file transfer platform built using [Next.js](https://nextjs.org/). It provides a streamlined interface for users to share and manage files effortlessly, with support for real-time previews, video, and interactive dashboards.
 
-First, run the development server:
+![Dashboard Preview](./public/dashboard.png)
+
+---
+
+## ✨ Features
+
+- 🔐 Secure and private file transfer
+- 🎥 Integrated video preview (`dash.mp4`)
+- 🌓 Light/Dark mode support
+- ⚙️ Built with TypeScript, Tailwind CSS, and Next.js App Router
+- 🌐 Fast performance with optimized static assets
+- 🧠 Context API for state management (`TransferContext.tsx`)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/TanayHingane/SafeBeam.git
+cd SafeBeam
+```
+
+Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### Run the development server:
 
 ```bash
 npm run dev
@@ -10,27 +49,60 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧩 Project Structure
 
-## Learn More
+```
+SafeBeam/
+├── public/               # Static assets (images, videos, icons)
+├── contexts/             # React Context API files
+├── src/                  # Components and pages
+├── starter-for-nextjs/   # Optional template/starter code
+├── .gitignore
+├── next.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js 14+ (App Router)](https://nextjs.org)
+- [React 18](https://reactjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- TypeScript
+- Context API
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📸 Screenshots
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Light Mode                       | Dark Mode                  |
+| -------------------------------- | -------------------------- |
+| ![Light](./public/dashboard.png) | ![Dark](./public/dark.png) |
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🙏 Acknowledgments
+
+- Inspired by modern dashboard UI/UX designs
+- Built using the official [Next.js](https://nextjs.org/) starter
+
+---
+
+## 📬 Contact
+
+Created by [Tanay Hingane](https://github.com/TanayHingane) – feel free to reach out or contribute!
