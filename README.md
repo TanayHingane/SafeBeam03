@@ -2,7 +2,7 @@
 
 **SafeBeam** is a modern, secure, and user-friendly file transfer platform built using [Next.js](https://nextjs.org/). It provides a streamlined interface for users to share and manage files effortlessly, with support for real-time previews, video, and interactive dashboards.
 
-![Dashboard Preview](./public/dashboard.png)
+![Dashboard Preview](./public/heroImg.png)
 
 ---
 
@@ -84,9 +84,9 @@ SafeBeam/
 
 ## 📸 Screenshots
 
-| Light Mode                       | Dark Mode                  |
-| -------------------------------- | -------------------------- |
-| ![Light](./public/dashboard.png) | ![Dark](./public/dark.png) |
+| Light Mode                   | Dark Mode                  |
+| ---------------------------- | -------------------------- |
+| ![Light](./public/light.png) | ![Dark](./public/dark.png) |
 
 ---
 
