@@ -9,7 +9,6 @@
 ## ✨ Features
 
 - 🔐 Secure and private file transfer
-- 🎥 Integrated video preview (`dash.mp4`)
 - 🌓 Light/Dark mode support
 - ⚙️ Built with TypeScript, Tailwind CSS, and Next.js App Router
 - 🌐 Fast performance with optimized static assets
