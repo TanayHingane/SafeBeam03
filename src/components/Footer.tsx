@@ -37,7 +37,7 @@ const Footer = () => {
               <FooterLink href="https://linkedin.com/in/tanayhingane">
                 LinkedIn
               </FooterLink>
-              <FooterLink href="https://tanayhingan03.vercel.app/">
+              <FooterLink href="https://tanayhingane03.vercel.app/">
                 Portfolio
               </FooterLink>
               <FooterLink href="mailto:tanayhingane03@gmail.com?subject=Hello%20I%27m%20____%20from%20____%20company&body=I%20want%20to%20start%20a%20new%20project%20about%20____%20and%20time%20duration%20is%20___%20days.">
