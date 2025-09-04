@@ -3,7 +3,7 @@ import React from "react";
 
 const NotFoundPage = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen transition-colors duration-300 bg-[#f0f2f5] text-gray-800 dark:bg-[#0d1117] dark:text-gray-200">
+    <div className="flex items-center justify-center min-h-screen transition-colors duration-300 bg-white text-gray-800 dark:bg-black dark:text-gray-200">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
         
@@ -53,7 +53,7 @@ const NotFoundPage = () => {
             background-image: linear-gradient(45deg, #818cf8, #c7d2fe);
         }
       `}</style>
-      <div className="rounded-3xl backdrop-filter backdrop-blur-lg border border-neutral-200 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-900/50 p-12 text-center max-w-lg mx-auto shadow-2xl">
+      <div className="rounded-3xl backdrop-filter backdrop-blur-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-black p-12 text-center max-w-lg mx-auto shadow-2xl">
         <div className="relative inline-block mb-8">
           <h1
             className="text-9xl font-extrabold text-transparent gradient-text"
