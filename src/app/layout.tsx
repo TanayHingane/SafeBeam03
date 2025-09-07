@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: `%s | SafeBeam`,
   },
   description:
-    "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes. No sign-ups, no limits, just secure, ephemeral transfers.",
+    "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes. No sign-ups, no limits, just secure, ephemeral transfers. Created by Tanay Hingane.",
   keywords: [
     "secure file transfer",
     "private file sharing",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "SafeBeam",
     images: [
       {
-        url: "https://safebeam03.vercel.app/og-image.png",
+        url: "https://safebeam03.vercel.app/og-image",
         width: 1200,
         height: 630,
       },
@@ -40,11 +40,11 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "app",
     title: "SafeBeam | Secure & Ephemeral File Transfer",
     description:
       "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes.",
-    images: ["https://safebeam03.vercel.app/og-image.png"],
+    images: ["https://safebeam03.vercel.app/og-image"],
   },
   metadataBase: new URL("https://safebeam03.vercel.app"),
 };
