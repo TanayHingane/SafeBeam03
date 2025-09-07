@@ -15,7 +15,7 @@ export const Origin = () => (
       </div>
       <div className="grid md:grid-cols-3 gap-8 items-center justify-center">
         <motion.div
-          className="md:col-span-1 -mt-20 md:mt-0 flex justify-center"
+          className="md:col-span-1 md:-mt-20 mt-0 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.5 }}

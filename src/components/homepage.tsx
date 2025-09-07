@@ -151,20 +151,20 @@ const SafeBeamHomepage = () => {
           <h2 className="text-xl md:text-4xl font-bold mb-12">
             Built with Modern Technology
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 pt-9">
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pt-9">
+            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center col-span-2 md:col-span-1">
               <SiNextdotjs className="text-5xl mb-4" />
               <p className="font-semibold">Next.js</p>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center">
+            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center col-span-2 md:col-span-1">
               <FaReact className="text-5xl mb-4 text-blue-400" />
               <p className="font-semibold">React.js</p>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center">
+            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center col-span-2 md:col-span-1">
               <SiTailwindcss className="text-5xl mb-4 text-teal-400" />
               <p className="font-semibold">Tailwind CSS</p>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center">
+            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center col-span-2 md:col-span-1">
               <SiAppwrite className="text-5xl mb-4 text-pink-500" />
               <p className="font-semibold">Appwrite</p>
             </div>
