@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import SafeBeamHomepage from "@/components/homepage";
-// import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
 
 export default function Home() {
   return (

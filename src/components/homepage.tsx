@@ -9,6 +9,8 @@ import {
   FiUploadCloud,
 } from "react-icons/fi";
 import { SiAppwrite, SiNextdotjs, SiTailwindcss } from "react-icons/si";
+import { Benefits } from "./Benefits";
+import { Origin } from "./Origin";
 
 const SafeBeamHomepage = () => {
   return (
@@ -17,19 +19,24 @@ const SafeBeamHomepage = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Abstract Background Animation */}
         <div className="absolute inset-0 z-0 opacity-10">
-          <div className="absolute bg-blue-500 rounded-full w-96 h-96 -top-20 -left-20 animate-pulse hidden dark:block"></div>
-          <div className="absolute bg-green-500 rounded-full w-96 h-96 -bottom-20 -right-20 animate-pulse hidden dark:block"></div>
+          <div className="absolute bg-sky-400 rounded-full w-96 h-96 -top-20 -left-20 opacity-40 hidden dark:block"></div>
+          <div className="absolute bg-emerald-500 rounded-full w-96 h-96 -bottom-20 -right-20 opacity-40 hidden dark:block"></div>
         </div>
 
         <div className="container mx-auto lg:mx-20 text-center relative z-10 px-4">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-            SafeBeam: Secure, Instant File & Text Transfer.
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+          <span className="text-4xl md:text-7xl  py-24 font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
+            <span className="relative">
+              SafeBeam
+              <span className="absolute bottom-0 sm:-bottom-1 left-0 right-0 h-2 sm:h-3 bg-blue-400 dark:bg-blue-500 -z-10 transform -rotate-1"></span>
+            </span>
+            {" -"} Secure,
+            <br /> Instant File & Text Transfer.
+          </span>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8 mt-10">
             Share files and text with a one-time OTP that expires in 10 minutes.
             No sign-ups, no limits, just secure, ephemeral transfers.
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <a href="/transfer">
               <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105">
                 Try SafeBeam Now
@@ -37,17 +44,23 @@ const SafeBeamHomepage = () => {
             </a>
             <a
               href="https://github.com/TanayHingane/SafeBeam"
-              className="border-2 border-gray-300 hover:bg-gray-100 text-gray-700 dark:border-gray-600 dark:hover:bg-gray-800 dark:text-gray-300 font-bold py-3 px-8 rounded-full transition flex items-center gap-2"
+              className=""
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FiGithub /> View on GitHub
+              {" "}
+              <button className="border-2 border-gray-300 hover:bg-gray-100 text-gray-700 dark:border-gray-600 dark:hover:bg-gray-800 dark:text-gray-300 font-bold py-3 px-8 rounded-full transition flex items-center gap-2">
+                <FiGithub /> View on GitHub
+              </button>
             </a>
           </div>
         </div>
       </section>
 
       {/* <hr className="border-gray-800" /> */}
+      <div className="px-4">
+        <Benefits />
+      </div>
 
       {/* System Architecture Section */}
       <section className="py-20 mt-5 px-24">
@@ -212,6 +225,9 @@ const SafeBeamHomepage = () => {
           </div>
         </div>
       </section>
+      <div className="mt-10 px-4">
+        <Origin />
+      </div>
     </div>
   );
 };
