@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "app",
+    card: "summary_large_image",
     title: "SafeBeam | Secure & Ephemeral File Transfer",
     description:
       "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes.",
