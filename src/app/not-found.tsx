@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import React from "react";
 
@@ -71,12 +70,12 @@ const NotFoundPage = () => {
         <p className="mb-8 text-lg">
           It seems the file was beamed into the void.
         </p>
-        <a
+        <Link
           href="/"
           className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-full px-8 py-3 font-semibold transition-all duration-300 ease-in-out"
         >
           Beam Me Home
-        </a>
+        </Link>
       </div>
     </div>
   );
