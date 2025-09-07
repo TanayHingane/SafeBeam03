@@ -26,7 +26,7 @@ const benefits = [
 export const Benefits = () => (
   <section className="py-24 px-4 bg-white dark:bg-black">
     <div className="max-w-6xl mx-auto text-center">
-      <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+      <h2 className="text-xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
         Why Choose SafeBeam?
       </h2>
       <p className="text-lg text-gray-600 dark:text-gray-400 mb-16 max-w-3xl mx-auto">

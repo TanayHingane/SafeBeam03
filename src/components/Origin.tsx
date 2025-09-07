@@ -6,7 +6,7 @@ export const Origin = () => (
   <section className="py-24 px-4 bg-white dark:bg-black">
     <div className="max-w-4xl mx-auto">
       <div className="text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+        <h2 className="text-xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
           The Spark Behind SafeBeam
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
@@ -15,7 +15,7 @@ export const Origin = () => (
       </div>
       <div className="grid md:grid-cols-3 gap-8 items-center justify-center">
         <motion.div
-          className="md:col-span-1 -mt-20 flex justify-center"
+          className="md:col-span-1 -mt-20 md:mt-0 flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.5 }}

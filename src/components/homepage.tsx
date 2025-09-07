@@ -65,7 +65,7 @@ const SafeBeamHomepage = () => {
       {/* System Architecture Section */}
       <section className="py-20 mt-5 px-24">
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">
+          <h2 className="text-xl md:text-4xl font-bold mb-12">
             How It Works: Secure by Design
           </h2>
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-4 pt-9">
@@ -148,10 +148,10 @@ const SafeBeamHomepage = () => {
       {/* Tech Stack Section */}
       <section className="py-20 bg-white dark:bg-black mt-5 px-24">
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">
+          <h2 className="text-xl md:text-4xl font-bold mb-12">
             Built with Modern Technology
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pt-9">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 pt-9">
             <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex flex-col items-center justify-center">
               <SiNextdotjs className="text-5xl mb-4" />
               <p className="font-semibold">Next.js</p>
@@ -181,10 +181,10 @@ const SafeBeamHomepage = () => {
       {/* Pricing Section */}
       <section className="py-20 mt-5">
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">
+          <h2 className="text-xl md:text-4xl font-bold mb-12">
             Simple & Transparent Pricing
           </h2>
-          <div className="flex justify-center gap-8">
+          <div className="flex flex-col md:flex-row justify-center gap-8">
             <div className="bg-white dark:bg-gray-800 border-2 border-blue-500 p-8 rounded-lg max-w-sm w-full">
               <h3 className="text-2xl font-bold mb-4">Community Plan</h3>
               <p className="text-5xl font-extrabold mb-6">Free</p>
