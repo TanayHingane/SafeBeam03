@@ -1,22 +1,52 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/Navbar";
+import { TransferProvider } from "../../contexts/TransferContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SafeBeam - Beaming files with safety.",
-  description: "Beaming files with safety.",
+  title: {
+    default: "SafeBeam | Secure & Ephemeral File Transfer",
+    template: `%s | SafeBeam`,
+  },
+  description:
+    "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes. No sign-ups, no limits, just secure, ephemeral transfers.",
+  keywords: [
+    "secure file transfer",
+    "private file sharing",
+    "ephemeral file sharing",
+    "end-to-end encryption",
+    "OTP file sharing",
+    "SafeBeam",
+  ],
+  authors: [{ name: "Tanay Hingane", url: "https://github.com/TanayHingane" }],
+  openGraph: {
+    title: "SafeBeam | Secure & Ephemeral File Transfer",
+    description:
+      "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes.",
+    url: "https://safebeam03.vercel.app/",
+    siteName: "SafeBeam",
+    images: [
+      {
+        url: "https://safebeam03.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SafeBeam | Secure & Ephemeral File Transfer",
+    description:
+      "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes.",
+    images: ["https://safebeam03.vercel.app/og-image.png"],
+  },
+  metadataBase: new URL("https://safebeam03.vercel.app"),
 };
 
 export default function RootLayout({
@@ -26,19 +56,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta
-          name="google-site-verification"
-          content="BbWKkb9nYRja3XHwtN7JOnQmxh4AQo1Rea5eWW1Zueo"
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Nav />
-          {children}
-          {/* <Footer /> */}
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TransferProvider>
+            <Navbar />
+            {children}
+          </TransferProvider>
         </ThemeProvider>
       </body>
     </html>
