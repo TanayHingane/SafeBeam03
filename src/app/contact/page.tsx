@@ -1,4 +1,5 @@
 "use client";
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -10,11 +11,22 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Copy } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Footer from "@/components/Footer";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("safebeam@example.com");
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  };
+
   return (
     <>
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 my-12">
@@ -22,7 +34,7 @@ export default function ContactPage() {
           <Card>
             <CardHeader>
               <CardTitle className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
-                Contact Us
+                Contact Me
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -102,24 +114,26 @@ export default function ContactPage() {
           <div className="mt-8 text-center">
             <div className="inline-flex flex-col md:flex-row items-center rounded-full bg-muted px-4 py-2">
               <span className="text-lg font-medium text-muted-foreground">
-                Or email us at:
+                Or email Me at:
               </span>
               <div className="ml-4 flex items-center">
                 <a
-                  href="mailto:safebeam@example.com"
+                  href="mailto:tanayhingane03@gmail.com"
                   className="text-lg font-semibold text-primary"
                 >
-                  safebeam@example.com
+                  tanayhingane03@gmail.com
                 </a>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="ml-2"
-                  onClick={() =>
-                    navigator.clipboard.writeText("safebeam@example.com")
-                  }
+                  className="ml-2 cursor-pointer"
+                  onClick={handleCopy}
                 >
-                  <Copy className="h-5 w-5" />
+                  {isCopied ? (
+                    <Check className="h-5 w-5 text-green-500" />
+                  ) : (
+                    <Copy className="h-5 w-5" />
+                  )}
                 </Button>
               </div>
             </div>
