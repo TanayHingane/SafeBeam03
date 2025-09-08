@@ -10,22 +10,22 @@ export async function GET() {
     { loc: `${baseUrl}/contact`, priority: "0.5", changefreq: "monthly" },
   ];
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${urls
     .map(
       ({ loc, priority, changefreq }) => `
-    <url>
-      <loc>${loc}</loc>
-      <lastmod>${lastModified}</lastmod>
-      <changefreq>${changefreq}</changefreq>
-      <priority>${priority}</priority>
-    </url>`
+  <url>
+    <loc>${loc}</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`
     )
     .join("")}
 </urlset>`;
 
-  return new NextResponse(sitemap, {
+  return new NextResponse(xml, {
     headers: {
       "Content-Type": "application/xml",
     },
