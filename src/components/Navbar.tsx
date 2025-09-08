@@ -25,12 +25,7 @@ const navigationLinks = [
   { href: "/", label: "Home", icon: HomeIcon, active: true },
   { href: "/transfer", label: "Send", icon: Send },
   { href: "/transfer/#receive-data", label: "Receive", icon: Download },
-  {
-    href: "https://tanayhingane03.vercel.app",
-    label: "Contact",
-    icon: UsersIcon,
-    target: "_blank",
-  }, // { href: "/contact", label: "Contact", icon: User },
+  { href: "/contact", label: "Contact", icon: UsersIcon },
 ];
 
 // Language options
