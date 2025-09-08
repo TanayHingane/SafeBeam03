@@ -46,6 +46,14 @@ export const metadata: Metadata = {
       "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes.",
     images: ["https://safebeam03.vercel.app/og-image"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   metadataBase: new URL("https://safebeam03.vercel.app"),
 };
 
