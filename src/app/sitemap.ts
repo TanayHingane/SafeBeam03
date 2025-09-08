@@ -16,5 +16,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const, // 👈 important
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const, // 👈 important
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/transfer/#receive-data`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const, // 👈 important
+      priority: 0.7,
+    },
   ];
 }
