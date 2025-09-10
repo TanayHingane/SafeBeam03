@@ -43,7 +43,7 @@ const SafeBeamHomepage = () => {
               </button>
             </a>
             <a
-              href="https://github.com/TanayHingane/SafeBeam"
+              href="https://github.com/TanayHingane/SafeBeam03"
               className=""
               target="_blank"
               rel="noopener noreferrer"
