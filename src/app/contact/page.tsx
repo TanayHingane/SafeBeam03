@@ -28,9 +28,9 @@ export default function ContactPage() {
   };
 
   return (
-    <>
+    <div className="bg-white dark:bg-black">
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 my-12">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-3xl lg:mt-10 -mb-7">
           <Card>
             <CardHeader>
               <CardTitle className="text-center text-4xl font-bold tracking-tight sm:text-5xl">
@@ -118,10 +118,10 @@ export default function ContactPage() {
               </span>
               <div className="ml-4 flex items-center">
                 <a
-                  href="mailto:tanayhingane03@gmail.com"
+                  href="mailto:safebeam03@gmail.com"
                   className="text-lg font-semibold text-primary"
                 >
-                  tanayhingane03@gmail.com
+                  safebeam03@gmail.com
                 </a>
                 <Button
                   variant="ghost"
@@ -141,6 +141,6 @@ export default function ContactPage() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

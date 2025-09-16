@@ -1,83 +1,93 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+// For Next.js, you would typically use the Link component for client-side navigation.
+// Since this is a self-contained example, a standard <a> tag is used.
+// import Link from 'next/link';
+
+// You can copy and paste this directly into a `not-found.tsx` (App Router)
+// or `404.tsx` (Pages Router) file in your Next.js project.
+
 const NotFoundPage = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen transition-colors duration-300 bg-white text-gray-800 dark:bg-black dark:text-gray-200">
+    <>
+      {/* This style block defines the custom animations for the superhero image.
+        - `zip-in`: Makes the image slide in from the left.
+        - `pulse-glow`: Creates a subtle glowing effect on the lightning trail, now in blue.
+      */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .beam {
-            position: absolute;
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, #58a6ff, rgba(88, 166, 255, 0));
-            transform-origin: left;
+        @keyframes zip-in {
+          0% {
+            transform: translateX(-50%);
             opacity: 0;
-            animation: beam-animate 3s forwards ease-in-out;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
         }
-        
-        .beam-broken {
-            position: absolute;
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, #ff7b72, rgba(255, 123, 114, 0));
-            transform-origin: left;
-            opacity: 0;
-            animation: beam-animate-broken 3s forwards ease-in-out;
+        @keyframes pulse-glow {
+          0%, 100% {
+            filter: drop-shadow(0 0 8px rgba(0, 191, 255, 0.7));
+          }
+          50% {
+            filter: drop-shadow(0 0 16px rgba(0, 191, 255, 0.9));
+          }
         }
-
-        @keyframes beam-animate {
-            0% { transform: rotate(0deg) scaleX(0); opacity: 1; }
-            50% { transform: rotate(45deg) scaleX(1); opacity: 1; }
-            100% { transform: rotate(90deg) scaleX(0.5); opacity: 0; }
+        .animate-zip-in {
+          animation: zip-in 0.8s ease-out forwards;
         }
-
-        @keyframes beam-animate-broken {
-            0% { transform: rotate(0deg) scaleX(0); opacity: 0; }
-            50% { transform: rotate(45deg) scaleX(1); opacity: 1; }
-            100% { transform: rotate(135deg) scaleX(0.7); opacity: 1; }
-        }
-
-        .gradient-text {
-            background-image: linear-gradient(45deg, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .dark .gradient-text {
-            background-image: linear-gradient(45deg, #818cf8, #c7d2fe);
+        .animate-pulse-glow {
+          animation: pulse-glow 2s infinite ease-in-out;
         }
       `}</style>
-      <div className="rounded-3xl backdrop-filter backdrop-blur-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-black p-12 text-center max-w-lg mx-auto shadow-2xl">
-        <div className="relative inline-block mb-8">
+
+      <main className="dark:bg-black dark:text-white bg-white text-black min-h-screen flex flex-col items-center justify-center text-center p-6 font-sans overflow-hidden">
+        <div className="max-w-xl w-full">
+          {/* Superhero Image with Animations - Updated with the new sticker-style image */}
+          <div className="mb-8">
+            <Image
+              src="/fl.png" // Ensure this image is in your public directory
+              alt="A sticker of a cartoon superhero in blue running at super speed"
+              className="w-full max-w-sm mx-auto animate-zip-in animate-pulse-glow"
+              width={300}
+              height={300}
+            />
+          </div>
+
+          {/* Sarcastic and Playful Text Content - Colors updated to match the new theme */}
           <h1
-            className="text-9xl font-extrabold text-transparent gradient-text"
-            style={{ WebkitTextStroke: "1px currentColor" }}
+            className="text-4xl md:text-5xl font-bold text-blue-600 mb-4 animate-zip-in"
+            style={{ animationDelay: "0.2s" }}
           >
-            404
+            Whoa, slow down!
           </h1>
-          <div className="beam top-1/2 left-1/4 -translate-y-1/2"></div>
-          <div className="beam-broken top-1/2 right-1/4 -translate-y-1/2"></div>
+          <p
+            className="text-lg md:text-xl text-black dark:text-white mb-4 animate-zip-in"
+            style={{ animationDelay: "0.3s" }}
+          >
+            Flash ran so fast, even he lost this page. It seems you&apos;ve
+            discovered a file lost in the digital cosmos.
+          </p>
+          <p
+            className="text-gray-400 mb-8 animate-zip-in"
+            style={{ animationDelay: "0.4s" }}
+          >
+            Error 404: Page Not Found
+          </p>
+
+          {/* Call-to-Action Button - Colors updated to match the new theme */}
+          <Link
+            href="/" // In a real Next.js app, you'd use: <Link href="/" passHref>
+            className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-cyan-500 focus:ring-opacity-50 animate-zip-in"
+            style={{ animationDelay: "0.5s" }}
+          >
+            Return to SafeBeam
+          </Link>
         </div>
-        <p className="text-2xl font-semibold mb-4">
-          The beam couldn&apos;t find its destination.
-        </p>
-        <p className="mb-8 text-lg">
-          It seems the file was beamed into the void.
-        </p>
-        <Link
-          href="/"
-          className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-full px-8 py-3 font-semibold transition-all duration-300 ease-in-out"
-        >
-          Beam Me Home
-        </Link>
-      </div>
-    </div>
+      </main>
+    </>
   );
 };
 

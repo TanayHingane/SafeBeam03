@@ -18,10 +18,6 @@ const SafeBeamHomepage = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Abstract Background Animation */}
-        <div className="absolute inset-0 z-0 opacity-10">
-          <div className="absolute bg-sky-400 rounded-full w-96 h-96 -top-20 -left-20 opacity-40 hidden dark:block"></div>
-          <div className="absolute bg-emerald-500 rounded-full w-96 h-96 -bottom-20 -right-20 opacity-40 hidden dark:block"></div>
-        </div>
 
         <div className="container mx-auto lg:mx-20 text-center relative z-10 px-4">
           <span className="text-4xl md:text-7xl  py-24 font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
@@ -179,7 +175,7 @@ const SafeBeamHomepage = () => {
       {/* <hr className="border-gray-800" /> */}
 
       {/* Pricing Section */}
-      <section className="py-20 mt-5">
+      <section className="py-20 mt-5" id="pricing">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-xl md:text-4xl font-bold mb-12">
             Simple & Transparent Pricing

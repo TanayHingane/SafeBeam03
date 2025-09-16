@@ -1,6 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
-import { FiShield, FiZap, FiUserX } from "react-icons/fi";
+import { FiShield, FiUserX, FiZap } from "react-icons/fi";
 
 const benefits = [
   {
@@ -35,13 +34,9 @@ export const Benefits = () => (
       </p>
       <div className="grid md:grid-cols-3 gap-8">
         {benefits.map((benefit, index) => (
-          <motion.div
+          <div
             key={index}
             className="bg-gray-50 dark:bg-gray-800 p-8 text-left rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 dark:border-secondary"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <div className="mb-6">{benefit.icon}</div>
             <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
@@ -50,7 +45,7 @@ export const Benefits = () => (
             <p className="text-gray-600 dark:text-gray-400">
               {benefit.description}
             </p>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
