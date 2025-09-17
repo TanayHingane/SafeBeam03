@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "SafeBeam",
     images: [
       {
-        url: "https://safebeam03.vercel.app/og-image",
+        url: "https://safebeam03.vercel.app/og-image.png",
         width: 1200,
         height: 630,
       },
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "SafeBeam | Secure & Ephemeral File Transfer",
     description:
       "Share files and text with end-to-end encryption and a one-time OTP that expires in 10 minutes.",
-    images: ["https://safebeam03.vercel.app/og-image"],
+    images: ["https://safebeam03.vercel.app/og-image.png"],
   },
   robots: {
     index: true,
