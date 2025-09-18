@@ -71,7 +71,7 @@ export default function Nav() {
             onClick={() => window.location.reload()}
           >
             <RefreshCcw size={16} aria-hidden="true" />
-            Refresh
+            <span className="hidden md:inline">Refresh</span>
           </Button>
         </div>
       </div>

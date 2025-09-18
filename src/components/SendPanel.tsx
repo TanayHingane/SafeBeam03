@@ -1,32 +1,61 @@
-// components/SendPanel.tsx
+// components/UploadSection.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Upload, Send, FileText } from "lucide-react";
-import { useTransfer } from "../../contexts/TransferContext";
-import { FileUpload } from "./ui/file-upload";
-import { useId, useRef } from "react";
-import { CheckIcon, CopyIcon } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+// import { useTheme } from "next-themes";
+import { AnimatePresence, motion } from "framer-motion";
+
+// CONTEXT
+import { useTransfer } from "../../contexts/TransferContext"; // Adjust the import path as needed
+
+// SHADCN/UI COMPONENTS
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
-import "ldrs/react/NewtonsCradle.css";
-import { NewtonsCradle } from "ldrs/react";
-import { useTheme } from "next-themes";
+import { FileUpload } from "./ui/file-upload"; // Your custom file upload component
 
+// ICONS
+import {
+  AlertTriangle,
+  Check,
+  Copy,
+  FileText,
+  FileUp,
+  Loader2,
+  Send,
+  Upload,
+} from "lucide-react";
+
+/**
+ * Custom hook for a countdown timer.
+ * @param seconds - The total number of seconds to count down from.
+ * @param active - A boolean to start or stop the timer.
+ * @returns The remaining time in seconds.
+ */
 function useCountdown(seconds: number, active: boolean) {
   const [timeLeft, setTimeLeft] = useState(seconds);
 
   useEffect(() => {
-    if (!active) return;
-    setTimeLeft(seconds);
+    if (!active) {
+      setTimeLeft(seconds);
+      return;
+    }
 
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
@@ -44,30 +73,32 @@ function useCountdown(seconds: number, active: boolean) {
   return timeLeft;
 }
 
-export default function SendPanel() {
-  const [activeTab, setActiveTab] = useState<"text" | "file">("file");
+/**
+ * A modern, responsive section for uploading files or text content securely.
+ */
+export default function UploadSection() {
+  const [activeTab, setActiveTab] = useState<"file" | "text">("file");
   const [textContent, setTextContent] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [generatedId, setGeneratedId] = useState<string | null>(null);
+  const [copied, setCopied] = useState<boolean>(false);
+  const [stopwatchActive, setStopwatchActive] = useState(false);
 
   const { sendText, sendFile, isLoading } = useTransfer();
-  const { resolvedTheme } = useTheme(); // "light" | "dark" | undefined
-
-  const [stopwatchActive, setStopwatchActive] = useState(false);
-  const countdown = useCountdown(590, stopwatchActive); // 10 minutes
-
-  const id = useId();
-  const [copied, setCopied] = useState<boolean>(false);
+  // const { resolvedTheme } = useTheme();
   const inputRef = useRef<HTMLInputElement>(null);
+  const countdown = useCountdown(599, stopwatchActive); // 10 minutes
 
+  // Handler to copy the generated ID to the clipboard
   const handleCopy = () => {
     if (inputRef.current) {
       navigator.clipboard.writeText(inputRef.current.value);
       setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
+      setTimeout(() => setCopied(false), 2000);
     }
   };
 
+  // Handler to send text content
   const handleSendText = async () => {
     if (!textContent.trim()) return;
     const id = await sendText(textContent);
@@ -78,6 +109,7 @@ export default function SendPanel() {
     }
   };
 
+  // Handler to send a file
   const handleSendFile = async () => {
     if (!selectedFile) return;
     const id = await sendFile(selectedFile);
@@ -88,176 +120,218 @@ export default function SendPanel() {
     }
   };
 
+  const cardVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+  };
+
   return (
-    <div
-      className="bg-white dark:bg-black rounded-xl mx-auto p-6 w-full"
-      id="send-data"
-    >
-      <div className="my-4 items-center flex flex-col">
+    <div className="container mx-auto grid mt-24 md:mt-0 md:min-h-screen items-center gap-12 px-4 md:grid-cols-2 lg:gap-20">
+      {/* Left Column: Branding & Information */}
+      <div className="flex-col items-center hidden text-center md:items-center md:flex">
+        <Image
+          src="/transfer_img.png"
+          alt="Secure File Transfer Illustration"
+          width={400}
+          height={400}
+          className="mb-6 h-auto w-full max-w-[250px] md:max-w-xs"
+          priority
+        />
+        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+          Share Data.
+          <br />
+          Instantly & Securely.
+        </h1>
+        <p className="mt-4 max-w-md text-lg text-muted-foreground">
+          Upload a file or paste text to generate a secure, temporary sharing
+          ID. Your data is private and automatically deleted after 10 minutes.
+        </p>
+      </div>
+
+      {/* Tagline for mobile view */}
+      <div className="items-center flex-col -mb-5 block md:hidden text-center">
         <div className="inline-block text-xs font-medium px-3 py-1 bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-blue-300 border border-neutral-300 text-blue-500 rounded-full mb-2">
-          Upload Anonymously
+          <FileUp className="inline mr-2 h-3 w-3" />
+          Instant Uploads
         </div>
-        <h1 className="text-2xl font-bold dark:text-neutral-50 tracking-tight">
-          Share your data securely
+        <h1 className="text-lg md:text-2xl font-bold dark:text-neutral-50 tracking-tight">
+          Share Files & Text Securely
         </h1>
       </div>
 
-      {/* Tab Selection */}
-      <Tabs
-        value={activeTab}
-        onValueChange={(val) => setActiveTab(val as "file" | "text")}
-        className="w-full items-center flex justify-center my-7"
-      >
-        <TabsList className="items-center flex justify-center">
-          <TabsTrigger
-            value="file"
-            className="min-w-[100px] max-w-[200px] cursor-pointer"
-          >
-            <Upload className="h-4 w-4" />
-            File
-          </TabsTrigger>
-          <TabsTrigger
-            value="text"
-            className="min-w-[100px] max-w-[200px] cursor-pointer"
-          >
-            <FileText className="h-4 w-4" />
-            Text
-          </TabsTrigger>
-        </TabsList>
-      </Tabs>
-
-      {/* Content Area */}
-      <div key={activeTab}>
-        {activeTab === "text" ? (
-          <div className="space-y-4">
-            <div className="w-full max-w-4xl mx-auto min-h-44 bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg">
-              <textarea
-                value={textContent}
-                onChange={(e) => setTextContent(e.target.value)}
-                placeholder="Enter your text here..."
-                className="w-full h-44 p-5 border-2 border-neutral-200 dark:border-neutral-800 border-dashed rounded-lg resize-none text-base text-black dark:text-white placeholder:text-muted-foreground"
-                maxLength={10000000}
-              />
-            </div>
-            <button
-              onClick={handleSendText}
-              disabled={!textContent.trim() || !!generatedId}
-              className="cursor-pointer w-full bg-black text-white dark:bg-white dark:text-black py-3 px-4 rounded-lg hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+      {/* Right Column: Uploader */}
+      <div className="w-full max-w-md">
+        <AnimatePresence mode="wait">
+          {generatedId ? (
+            // Success State Card
+            <motion.div
+              key="success-card"
+              variants={cardVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: 0.3 }}
             >
-              {isLoading ? (
-                // <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
-                <NewtonsCradle
-                  size="45"
-                  speed="1.75"
-                  color={resolvedTheme === "dark" ? "black" : "white"}
-                />
-              ) : (
-                <>
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Text
-                </>
-              )}
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            <div className="w-full max-w-4xl mx-auto min-h-44 bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg">
-              <FileUpload
-                onChange={(files) => setSelectedFile(files[0] || null)}
-              />
-            </div>
-
-            <button
-              onClick={handleSendFile}
-              disabled={!selectedFile || !!generatedId}
-              className="cursor-pointer w-full bg-black text-white dark:bg-white dark:text-black py-3 px-4 rounded-lg hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-            >
-              {isLoading ? (
-                // <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
-                <NewtonsCradle
-                  size="45"
-                  speed="1.75"
-                  color={resolvedTheme === "dark" ? "black" : "white"}
-                />
-              ) : (
-                <>
-                  <Upload className="w-4 h-4 mr-2" />
-                  Upload File
-                </>
-              )}
-            </button>
-          </div>
-        )}
-      </div>
-
-      {/* Generated ID Display + Stopwatch */}
-      {generatedId && (
-        <div className="mt-16 my-2 flex flex-col gap-2 rounded-lg bg-emerald-50 border dark:bg-[#171717]">
-          <div className="flex justify-between items-center p-3 mt-2 px-5">
-            <Label className="items-center justify-center text-base text-emerald-500 dark:text-neutral-100">
-              Copy to clipboard
-            </Label>
-            <TooltipProvider delayDuration={0}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    onClick={handleCopy}
-                    className="text-emerald-400/80 dark:text-neutral-100 hover:text-emerald-400 dark:hover:text-neutral-50 focus-visible:border-ring focus-visible:ring-ring/50 inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed"
-                    aria-label={copied ? "Copied" : "Copy to clipboard"}
-                    disabled={copied}
-                  >
-                    <div
-                      className={cn(
-                        "transition-all",
-                        copied ? "scale-100 opacity-100" : "scale-0 opacity-0"
-                      )}
+              <Card className="w-full overflow-hidden border-green-500/50 dark:border-green-500/40">
+                <CardHeader className="bg-green-50/50 dark:bg-green-900/10">
+                  <CardTitle className="flex items-center text-green-600 dark:text-green-400">
+                    <Check className="mr-2 h-5 w-5" />
+                    Upload Successful!
+                  </CardTitle>
+                  <CardDescription>
+                    Share this ID with the recipient. It will expire shortly.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4 p-6">
+                  <div>
+                    <Label
+                      htmlFor="generated-id"
+                      className="text-sm font-medium"
                     >
-                      <CheckIcon
-                        className="stroke-green-500"
-                        size={16}
-                        aria-hidden="true"
+                      Your Secure Transfer ID
+                    </Label>
+                    <div className="mt-1 flex items-center space-x-2">
+                      <Input
+                        id="generated-id"
+                        ref={inputRef}
+                        type="text"
+                        value={generatedId}
+                        readOnly
+                        className="flex-grow font-mono text-lg"
+                        aria-label="Generated Transfer ID"
                       />
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              onClick={handleCopy}
+                              aria-label={
+                                copied ? "Copied" : "Copy to clipboard"
+                              }
+                            >
+                              <AnimatePresence mode="wait" initial={false}>
+                                {copied ? (
+                                  <motion.div
+                                    key="check"
+                                    initial={{ scale: 0.5, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    exit={{ scale: 0.5, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                  >
+                                    <Check className="h-4 w-4 text-green-500" />
+                                  </motion.div>
+                                ) : (
+                                  <motion.div
+                                    key="copy"
+                                    initial={{ scale: 0.5, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    exit={{ scale: 0.5, opacity: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                  >
+                                    <Copy className="h-4 w-4" />
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{copied ? "Copied!" : "Copy ID"}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
-                    <div
-                      className={cn(
-                        "absolute transition-all",
-                        copied ? "scale-0 opacity-0" : "scale-100 opacity-100"
-                      )}
-                    >
-                      <CopyIcon size={16} aria-hidden="true" />
+                  </div>
+                  {stopwatchActive && countdown > 0 && (
+                    <div className="flex items-center justify-center rounded-md border border-amber-500/30 bg-amber-50/50 p-3 text-center text-sm font-medium text-amber-700 dark:border-amber-500/20 dark:bg-amber-900/10 dark:text-amber-400">
+                      <AlertTriangle className="mr-2 h-4 w-4" />
+                      <span>
+                        Expires in{" "}
+                        <span className="font-mono tabular-nums">
+                          {String(Math.floor(countdown / 60)).padStart(2, "0")}:
+                          {String(countdown % 60).padStart(2, "0")}
+                        </span>
+                      </span>
                     </div>
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent className="px-2 py-2 text-xs">
-                  Copy to clipboard
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
-
-          <div className="flex bg-white dark:bg-black p-5 rounded-b-lg border-y">
-            <Input
-              ref={inputRef}
-              id={id}
-              className="text-center text-emerald-500 bg-emerald-50 dark:bg-[#171717] dark:text-neutral-100 h-14"
-              type="text"
-              defaultValue={generatedId}
-              readOnly
-            />
-          </div>
-
-          {/* ⏱ Stopwatch below ID */}
-          {stopwatchActive && countdown > 0 && (
-            <div className="text-sm text-center py-3 -mt-2 text-red-500 dark:text-blue-500 font-semibold">
-              ⏳ Time remaining:{" "}
-              {Math.floor(countdown / 60)
-                .toString()
-                .padStart(2, "0")}
-              :{(countdown % 60).toString().padStart(2, "0")}
-            </div>
+                  )}
+                </CardContent>
+              </Card>
+            </motion.div>
+          ) : (
+            // Uploader Card
+            <motion.div key="uploader-card" variants={cardVariants}>
+              <Card className="w-full">
+                <CardHeader>
+                  <CardTitle className="text-base md:text-lg lg:text-xl">
+                    Create a Secure Transfer
+                  </CardTitle>
+                  <CardDescription>
+                    Select a method to upload your data.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Tabs
+                    value={activeTab}
+                    onValueChange={(v) => setActiveTab(v as "file" | "text")}
+                  >
+                    <TabsList className="grid w-full grid-cols-2">
+                      <TabsTrigger value="file">
+                        <Upload className="mr-2 h-4 w-4" />
+                        Upload File
+                      </TabsTrigger>
+                      <TabsTrigger value="text">
+                        <FileText className="mr-2 h-4 w-4" />
+                        Paste Text
+                      </TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="file" className="mt-6 space-y-4">
+                      <FileUpload
+                        onChange={(files) => setSelectedFile(files[0] || null)}
+                      />
+                      <Button
+                        onClick={handleSendFile}
+                        disabled={!selectedFile || isLoading}
+                        className="w-full mt-2"
+                      >
+                        {isLoading ? (
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        ) : (
+                          <Send className="mr-2 h-4 w-4" />
+                        )}
+                        Upload and Get ID
+                      </Button>
+                    </TabsContent>
+                    <TabsContent value="text" className="mt-6 space-y-4">
+                      <Textarea
+                        value={textContent}
+                        onChange={(e) => setTextContent(e.target.value)}
+                        placeholder="Paste your text here. Max 10MB."
+                        className="h-40 resize-none"
+                        maxLength={10000000}
+                        aria-label="Text content to upload"
+                      />
+                      <Button
+                        onClick={handleSendText}
+                        disabled={!textContent.trim() || isLoading}
+                        className="w-full"
+                      >
+                        {isLoading ? (
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        ) : (
+                          <Send className="mr-2 h-4 w-4" />
+                        )}
+                        Upload and Get ID
+                      </Button>
+                    </TabsContent>
+                  </Tabs>
+                </CardContent>
+              </Card>
+            </motion.div>
           )}
-        </div>
-      )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

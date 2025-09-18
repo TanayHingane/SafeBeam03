@@ -13,6 +13,8 @@ interface TransferContextType {
   sendFile: (file: File) => Promise<string | null>;
   receiveTransfer: (id: string) => Promise<Transfer | null>;
   clearTransfer: () => void;
+  transferError?: string | null;
+  resetTransfer?: () => void;
 }
 
 const TransferContext = createContext<TransferContextType | undefined>(
@@ -23,6 +25,7 @@ export function TransferProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingReceive, setIsLoadingReceive] = useState(false);
   const [currentTransfer, setCurrentTransfer] = useState<Transfer | null>(null);
+  const [transferError, setTransferError] = useState<string | null>(null);
 
   const sendText = useCallback(async (text: string): Promise<string | null> => {
     setIsLoading(true);
@@ -78,6 +81,12 @@ export function TransferProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
+  const resetTransfer = () => {
+    setCurrentTransfer(null);
+    setTransferError(null);
+    // Reset any other relevant state
+  };
+
   const clearTransfer = useCallback(() => {
     setCurrentTransfer(null);
   }, []);
@@ -92,6 +101,8 @@ export function TransferProvider({ children }: { children: React.ReactNode }) {
         sendFile,
         receiveTransfer,
         clearTransfer,
+        transferError,
+        resetTransfer,
       }}
     >
       {children}

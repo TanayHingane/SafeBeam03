@@ -59,6 +59,13 @@ interface FileUploadProps {
   onChange?: (files: File[]) => void;
 }
 
+export const truncateString = (str: string, num: number): string => {
+  if (str.length <= num) {
+    return str;
+  }
+  return str.slice(0, num) + "...";
+};
+
 export function FileUpload({ onChange }: FileUploadProps) {
   const maxSize = 50 * 1024 * 1024; // 50MB
   const maxFiles = 1;
@@ -144,7 +151,9 @@ export function FileUpload({ onChange }: FileUploadProps) {
                 </div>
                 <div className="flex min-w-0 justify-between items-center gap-16">
                   <p className="truncate text-[13px] font-medium">
-                    {file.file.name}
+                    {file.file.name.trim().length > 0
+                      ? truncateString(file.file.name, 7)
+                      : "Unnamed file"}
                   </p>
                   <p className="text-muted-foreground text-[11px]">
                     {formatBytes(file.file.size)}
