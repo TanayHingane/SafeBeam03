@@ -63,7 +63,9 @@ function useCountdown(
         setTimeLeft((prev) => {
           if (prev <= 1) {
             clearInterval(intervalRef.current!);
-            onExpire?.();
+            if (onExpire) {
+              onExpire();
+            }
             return 0;
           }
           return prev - 1;
@@ -132,7 +134,6 @@ export default function ReceivePanel() {
   const handleReceive = async () => {
     if (transferId.length === 4) {
       // Reset any previous transfer state before attempting a new receive
-      resetTransfer();
       await receiveTransfer(transferId);
       // If successful, the useEffect above will set isTransferActive to true
     }
@@ -177,7 +178,10 @@ export default function ReceivePanel() {
   };
 
   return (
-    <div className="container mx-auto mt-10 md:mt-0 flex flex-col mb-16 items-center justify-center px-4 py-12" id="receive-data">
+    <div
+      className="container mx-auto mt-10 md:mt-0 flex flex-col mb-16 items-center justify-center px-4 py-12"
+      id="receive-data"
+    >
       <div className="mb-10 items-center flex flex-col">
         <div className="inline-block text-xs font-medium px-3 py-1 bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-blue-300 border border-neutral-300 text-blue-500 rounded-full mb-2">
           <Download className="inline mr-2 h-3 w-3 md:hidden" />
@@ -204,7 +208,6 @@ export default function ReceivePanel() {
               value={transferId}
               onChange={(value) => {
                 setTransferId(value);
-                if (transferError) resetTransfer(); // Clear error on new input
               }}
               aria-label="Enter 4-digit transfer ID"
             >

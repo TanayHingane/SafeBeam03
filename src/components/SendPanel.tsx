@@ -175,11 +175,11 @@ export default function UploadSection() {
             >
               <Card className="w-full overflow-hidden border-green-500/50 dark:border-green-500/40">
                 <CardHeader className="bg-green-50/50 dark:bg-green-900/10">
-                  <CardTitle className="flex items-center text-green-600 dark:text-green-400">
+                  <CardTitle className="flex items-center text-green-600 dark:text-green-400 text-lg md:text-xl lg:text-2xl">
                     <Check className="mr-2 h-5 w-5" />
                     Upload Successful!
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-xs md:text-base">
                     Share this ID with the recipient. It will expire shortly.
                   </CardDescription>
                 </CardHeader>
