@@ -100,13 +100,8 @@ export const truncateString = (str: string, num: number): string => {
  */
 export default function ReceivePanel() {
   const [transferId, setTransferId] = useState("");
-  const {
-    receiveTransfer,
-    currentTransfer,
-    isLoadingReceive,
-    transferError,
-    resetTransfer,
-  } = useTransfer();
+  const { receiveTransfer, currentTransfer, isLoadingReceive, transferError } =
+    useTransfer();
   const [copied, setCopied] = useState(false);
 
   // Transfer expiry logic
@@ -354,7 +349,12 @@ export default function ReceivePanel() {
                         </span>
                         <Label>Type:</Label>
                         <span className="font-medium text-foreground">
-                          {currentTransfer.fileType || "Unknown"}
+                          {/* {currentTransfer.fileType || "Unknown"} */}
+                          {currentTransfer.fileType?.includes(
+                            "wordprocessingml"
+                          )
+                            ? "Word Document"
+                            : currentTransfer.fileType || "Unknown"}
                         </span>
                       </div>
                       <Button onClick={handleDownload} className="w-full">
