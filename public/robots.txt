@@ -1,7 +1,9 @@
-User-Agent: *
+# *
+User-agent: *
 Allow: /
 
-Sitemap: https://safebeam03.vercel.app/sitemap.xml
-/sitemap.xml
-Sitemap: https://safebeam03.vercel.app/sitemap.ts
+# Host
+Host: https://safebeam-03.vercel.app
 
+# Sitemaps
+Sitemap: https://safebeam-03.vercel.app/sitemap.xml
