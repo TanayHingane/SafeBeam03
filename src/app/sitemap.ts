@@ -1,24 +1,24 @@
-import { MetadataRoute } from 'next'
- 
+import { MetadataRoute } from "next";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://safebeam-03.vercel.app',
+      url: "https://safebeam03.vercel.app/",
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: 'https://safebeam-03.vercel.app/contact',
+      url: "https://safebeam03.vercel.app/transfer",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: 'https://safebeam-03.vercel.app/transfer',
+      url: "https://safebeam03.vercel.app/contact",
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "yearly",
       priority: 0.5,
     },
-  ]
+  ];
 }
