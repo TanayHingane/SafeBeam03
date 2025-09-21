@@ -59,8 +59,8 @@ const SafeBeamHomepage = () => {
       </div>
 
       {/* System Architecture Section */}
-      <section className="py-20 mt-5 px-24">
-        <div className="container mx-auto text-center px-4">
+      <section className="py-20 mt-5 px-4 md:px-24">
+        <div className="container mx-auto text-center">
           <h2 className="text-xl md:text-4xl font-bold mb-12">
             How It Works: Secure by Design
           </h2>
@@ -75,7 +75,7 @@ const SafeBeamHomepage = () => {
                 File is uploaded to the Next.js frontend.
               </p>
             </div>
-            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 md:rotate-0 rotate-90"></div>
+            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 transform md:rotate-0 rotate-90"></div>
 
             {/* Step 2: Store */}
             <div className="flex flex-col items-center">
@@ -87,7 +87,7 @@ const SafeBeamHomepage = () => {
                 Securely stored in the Appwrite database.
               </p>
             </div>
-            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 md:rotate-0 rotate-90"></div>
+            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 transform md:rotate-0 rotate-90"></div>
 
             {/* Step 3: Generate OTP */}
             <div className="flex flex-col items-center">
@@ -99,7 +99,7 @@ const SafeBeamHomepage = () => {
                 One-Time OTP is generated.
               </p>
             </div>
-            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 md:rotate-0 rotate-90"></div>
+            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 transform md:rotate-0 rotate-90"></div>
 
             {/* Step 4: Share */}
             <div className="flex flex-col items-center">
@@ -111,7 +111,7 @@ const SafeBeamHomepage = () => {
                 Share the OTP with the recipient.
               </p>
             </div>
-            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 md:rotate-0 rotate-90"></div>
+            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 transform md:rotate-0 rotate-90"></div>
 
             {/* Step 5: Retrieve */}
             <div className="flex flex-col items-center">
@@ -123,7 +123,7 @@ const SafeBeamHomepage = () => {
                 Recipient enters OTP to download.
               </p>
             </div>
-            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 md:rotate-0 rotate-90"></div>
+            <div className="h-1 w-16 bg-gray-700 md:h-px md:w-24 transform md:rotate-0 rotate-90"></div>
 
             {/* Step 6: Cleanup */}
             <div className="flex flex-col items-center">
@@ -142,7 +142,7 @@ const SafeBeamHomepage = () => {
       {/* <hr className="border-gray-800" /> */}
 
       {/* Tech Stack Section */}
-      <section className="py-20 bg-white dark:bg-black mt-5 px-24">
+      <section className="py-20 bg-white dark:bg-black mt-5 px-4 md:px-24">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-xl md:text-4xl font-bold mb-12">
             Built with Modern Technology
@@ -175,49 +175,45 @@ const SafeBeamHomepage = () => {
       {/* <hr className="border-gray-800" /> */}
 
       {/* Pricing Section */}
-      <section className="py-20 mt-5" id="pricing">
-        <div className="container mx-auto text-center px-4">
-          <h2 className="text-xl md:text-4xl font-bold mb-12">
-            Simple & Transparent Pricing
-          </h2>
-          <div className="flex flex-col md:flex-row justify-center gap-8">
-            <div className="bg-white dark:bg-gray-800 border-2 border-blue-500 p-8 rounded-lg max-w-sm w-full">
-              <h3 className="text-2xl font-bold mb-4">Community Plan</h3>
-              <p className="text-5xl font-extrabold mb-6">Free</p>
-              <ul className="text-left space-y-2 text-gray-600 dark:text-gray-300">
-                <li className="flex items-center gap-3">
-                  <span className="text-green-500">✓</span> Unlimited File
-                  Transfers
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-green-500">✓</span> All File Types
-                  Supported
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-green-500">✓</span> Secure Text Notes
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-green-500">✓</span> 10-Minute OTP Expiry
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-green-500">✓</span> Cross-Platform
-                  Compatibility
-                </li>
-              </ul>
-            </div>
-            <div className="bg-white dark:bg-gray-800 border border-gray-700 p-8 rounded-lg max-w-sm w-full opacity-50 cursor-not-allowed">
-              <h3 className="text-2xl font-bold mb-4">Business Plan</h3>
-              <p className="text-3xl font-bold text-gray-500 mb-6">
-                Coming Soon
-              </p>
-              <ul className="text-left space-y-2 text-gray-500">
-                <li>Custom Expiry Times</li>
-                <li>Larger File Limits</li>
-                <li>Team Collaboration</li>
-                <li>Dedicated Support</li>
-                <li>And much more...</li>
-              </ul>
-            </div>
+      <section className="py-20 mt-5 px-4 md:px-8 text-center" id="pricing">
+        <h2 className="text-xl md:text-4xl font-bold mb-12">
+          Simple & Transparent Pricing
+        </h2>
+        <div className="flex flex-col md:flex-row justify-center gap-8">
+          <div className="bg-white dark:bg-gray-800 border-2 border-blue-500 p-8 rounded-lg max-w-sm w-full">
+            <h3 className="text-2xl font-bold mb-4">Community Plan</h3>
+            <p className="text-5xl font-extrabold mb-6">Free</p>
+            <ul className="text-left space-y-2 text-gray-600 dark:text-gray-300">
+              <li className="flex items-center gap-3">
+                <span className="text-green-500">✓</span> Unlimited File
+                Transfers
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="text-green-500">✓</span> All File Types
+                Supported
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="text-green-500">✓</span> Secure Text Notes
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="text-green-500">✓</span> 10-Minute OTP Expiry
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="text-green-500">✓</span> Cross-Platform
+                Compatibility
+              </li>
+            </ul>
+          </div>
+          <div className="bg-white dark:bg-gray-800 border border-gray-700 p-8 rounded-lg max-w-sm w-full opacity-50 cursor-not-allowed">
+            <h3 className="text-2xl font-bold mb-4">Business Plan</h3>
+            <p className="text-3xl font-bold text-gray-500 mb-6">Coming Soon</p>
+            <ul className="text-left space-y-2 text-gray-500">
+              <li>Custom Expiry Times</li>
+              <li>Larger File Limits</li>
+              <li>Team Collaboration</li>
+              <li>Dedicated Support</li>
+              <li>And much more...</li>
+            </ul>
           </div>
         </div>
       </section>
