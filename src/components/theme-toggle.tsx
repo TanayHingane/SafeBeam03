@@ -12,7 +12,7 @@ export default function ThemeToggle() {
   return (
     <Toggle
       variant="outline"
-      className="group data-[state=on]:hover:bg-muted text-muted-foreground data-[state=on]:text-muted-foreground data-[state=on]:hover:text-foreground size-8 rounded-full border-none shadow-none data-[state=on]:bg-transparent"
+      className="group data-[state=on]:hover:bg-muted text-muted-foreground data-[state=on]:text-muted-foreground data-[state=on]:hover:text-foreground size-8 rounded-full cursor-pointer shadow-none data-[state=on]:bg-transparent border border-input"
       pressed={isDark}
       onPressedChange={() => setTheme(isDark ? "light" : "dark")}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}

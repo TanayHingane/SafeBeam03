@@ -127,7 +127,7 @@ export default function UploadSection() {
   };
 
   return (
-    <div className="container mx-auto grid mt-24 md:mt-0 md:min-h-screen items-center gap-12 px-4 md:grid-cols-2 lg:gap-20">
+    <div className="container mx-auto grid pt-24 md:pt-0 md:min-h-screen items-center gap-12 px-4 md:grid-cols-2 lg:gap-20">
       {/* Left Column: Branding & Information */}
       <div className="flex-col items-center hidden text-center md:items-center md:flex">
         <Image

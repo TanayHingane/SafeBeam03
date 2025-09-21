@@ -69,6 +69,8 @@ export default function Nav() {
           <Button
             className="flex gap-2 cursor-pointer"
             onClick={() => window.location.reload()}
+            variant="outline"
+            size="sm"
           >
             <RefreshCcw size={16} aria-hidden="true" />
             <span className="hidden md:inline">Refresh</span>
