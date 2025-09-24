@@ -95,6 +95,34 @@ export const truncateString = (str: string, num: number): string => {
   return str.slice(0, num) + "...";
 };
 
+const getFileTypeLabel = (fileType) => {
+  if (!fileType) return "Unknown";
+
+  const typeMap = {
+    wordprocessingml: "DOCX",
+    spreadsheetml: "XLSX",
+    presentationml: "PPTX",
+    pdf: "PDF",
+    zip: "ZIP",
+    image: "IMAGE",
+    video: "VIDEO",
+    audio: "AUDIO",
+    text: "TEXT",
+    json: "JSON",
+    xml: "XML",
+    html: "HTML",
+    csv: "CSV",
+  };
+
+  for (const key in typeMap) {
+    if (fileType.includes(key)) {
+      return typeMap[key];
+    }
+  }
+
+  return "Unknown";
+};
+
 /**
  * A modern, responsive panel for receiving files or text content using a secure ID.
  */
@@ -350,11 +378,7 @@ export default function ReceivePanel() {
                         <Label>Type:</Label>
                         <span className="font-medium text-foreground">
                           {/* {currentTransfer.fileType || "Unknown"} */}
-                          {currentTransfer.fileType?.includes(
-                            "wordprocessingml"
-                          )
-                            ? "Word Document"
-                            : currentTransfer.fileType || "Unknown"}
+                          {getFileTypeLabel(currentTransfer.fileType)}
                         </span>
                       </div>
                       <Button onClick={handleDownload} className="w-full">
