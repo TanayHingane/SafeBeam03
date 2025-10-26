@@ -95,10 +95,10 @@ export const truncateString = (str: string, num: number): string => {
   return str.slice(0, num) + "...";
 };
 
-const getFileTypeLabel = (fileType) => {
+const getFileTypeLabel = (fileType: string): string => {
   if (!fileType) return "Unknown";
 
-  const typeMap = {
+  const typeMap: Record<string, string> = {
     wordprocessingml: "DOCX",
     spreadsheetml: "XLSX",
     presentationml: "PPTX",
@@ -114,7 +114,7 @@ const getFileTypeLabel = (fileType) => {
     csv: "CSV",
   };
 
-  for (const key in typeMap) {
+  for (const key of Object.keys(typeMap)) {
     if (fileType.includes(key)) {
       return typeMap[key];
     }
@@ -378,7 +378,7 @@ export default function ReceivePanel() {
                         <Label>Type:</Label>
                         <span className="font-medium text-foreground">
                           {/* {currentTransfer.fileType || "Unknown"} */}
-                          {getFileTypeLabel(currentTransfer.fileType)}
+                          {getFileTypeLabel(currentTransfer.fileType!)}
                         </span>
                       </div>
                       <Button onClick={handleDownload} className="w-full">
