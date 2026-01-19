@@ -84,7 +84,6 @@ function useCountdown(
       }
     };
   }, [active, initialSeconds, onExpire]);
-
   return timeLeft;
 }
 
@@ -194,6 +193,13 @@ export default function ReceivePanel() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && transferId.length === 4 && !isLoadingReceive) {
+      e.preventDefault();
+      handleReceive();
+    }
+  };
+
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
@@ -232,6 +238,7 @@ export default function ReceivePanel() {
               onChange={(value) => {
                 setTransferId(value);
               }}
+              onKeyDown={handleKeyDown}
               aria-label="Enter 4-digit transfer ID"
             >
               <InputOTPGroup>

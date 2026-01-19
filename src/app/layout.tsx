@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import { TransferProvider } from "../../contexts/TransferContext";
+import { RefreshProvider } from "../components/refreshcontext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -78,8 +79,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TransferProvider>
-            <Navbar />
-            {children}
+            <RefreshProvider>
+              <Navbar />
+              {children}
+            </RefreshProvider>
           </TransferProvider>
         </ThemeProvider>
       </body>

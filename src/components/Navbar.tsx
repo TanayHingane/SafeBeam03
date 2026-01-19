@@ -2,6 +2,7 @@
 "use client";
 
 import { Download, HomeIcon, RefreshCcw, Send, UsersIcon } from "lucide-react";
+import GitHubStarButton from "@/components/github-star-button";
 
 import ThemeToggle from "@/components/theme-toggle";
 import {
@@ -10,6 +11,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+
+import { useRefresh } from "../components/refreshcontext";
 
 import {
   Tooltip,
@@ -31,6 +34,7 @@ const navigationLinks = [
 // Language options
 
 export default function Nav() {
+  const { refresh } = useRefresh();
   return (
     <header className="fixed top-0 z-50 w-full border-b bg-white dark:bg-black px-4 md:px-60">
       <div className="flex h-16 items-center justify-between gap-4 w-full">
@@ -64,11 +68,12 @@ export default function Nav() {
         </NavigationMenu>
 
         <div className="flex items-center gap-2">
+          <GitHubStarButton />
           <ThemeToggle />
 
           <Button
             className="flex gap-2 cursor-pointer"
-            onClick={() => window.location.reload()}
+            onClick={refresh}
             variant="outline"
             size="sm"
           >
