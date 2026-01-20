@@ -34,7 +34,7 @@ export const Origin = () => (
           </div>
         </motion.div>
         <motion.div
-          className="md:col-span-2 space-y-6 text-lg text-gray-700 dark:text-gray-300"
+          className="md:col-span-2 space-y-6 text-base md:text-lg text-gray-700 dark:text-gray-300"
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -60,7 +60,7 @@ export const Origin = () => (
             too!.&quot;
           </p>
           <p className="text-right font-bold text-gray-800 dark:text-gray-200">
-            - Tanay Hingane, Creator of SafeBeam
+            - Tanay Hingane, <br /> Creator of SafeBeam
           </p>
         </motion.div>
       </div>

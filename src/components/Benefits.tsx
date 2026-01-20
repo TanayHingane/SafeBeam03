@@ -1,53 +1,73 @@
-"use client";
-import { FiShield, FiUserX, FiZap } from "react-icons/fi";
+import { Shield, Zap, Globe, Eye, UserX, FileType } from "lucide-react";
 
-const benefits = [
+const features = [
   {
-    icon: <FiShield className="w-10 h-10 text-accent-green" />,
-    title: "Unmatched Security",
+    icon: Shield,
+    title: "Secure & Private",
     description:
-      "Unlike traditional services, we use end-to-end encryption with ephemeral storage. Your files are encrypted on your device and permanently deleted after 10 minutes. We never have access to your unencrypted data.",
+      "End-to-end encryption keeps your files safe from prying eyes.",
   },
   {
-    icon: <FiZap className="w-10 h-10 text-accent-blue" />,
-    title: "Blazing Fast Transfers",
-    description:
-      "No accounts, no ads, no friction. Just a simple, fast interface to get your files from A to B as quickly as possible. Perfect for quick transfers on the go.",
+    icon: UserX,
+    title: "No Sign-Up",
+    description: "Start transferring instantly. No accounts, no hassle.",
   },
   {
-    icon: <FiUserX className="w-10 h-10 text-accent-green" />,
-    title: "Absolute Anonymity",
-    description:
-      "We don't require an account, and we don't track you. Your privacy is paramount. Share files without leaving a trace, a feature most cloud storage providers can't promise.",
+    icon: Globe,
+    title: "Cross-Platform",
+    description: "Works on any device, any browser. No limits.",
+  },
+  {
+    icon: Eye,
+    title: "Real-Time Preview",
+    description: "Preview files before downloading with live updates.",
+  },
+  {
+    icon: Zap,
+    title: "Instant Transfer",
+    description: "Lightning-fast P2P transfers with no server storage.",
+  },
+  {
+    icon: FileType,
+    title: "All File Types",
+    description: "Send any file format, from documents to videos.",
   },
 ];
 
-export const Benefits = () => (
-  <section className="py-24 px-4 bg-white dark:bg-black">
-    <div className="max-w-6xl mx-auto text-center">
-      <h2 className="text-xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-        Why Choose SafeBeam?
-      </h2>
-      <p className="text-lg text-gray-600 dark:text-gray-400 mb-16 max-w-3xl mx-auto">
-        In a world of data breaches and privacy concerns, SafeBeam offers a
-        refreshingly simple and secure alternative.
-      </p>
-      <div className="grid md:grid-cols-3 gap-8">
-        {benefits.map((benefit, index) => (
-          <div
-            key={index}
-            className="bg-gray-50 dark:bg-gray-800 p-8 text-left rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 dark:border-secondary"
-          >
-            <div className="mb-6">{benefit.icon}</div>
-            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-              {benefit.title}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              {benefit.description}
-            </p>
-          </div>
-        ))}
+const FeatureGrid = () => {
+  return (
+    <section className="py-24 px-4">
+      <div className="container max-w-6xl mx-auto">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Why Choose <span className="gradient-text">SafeBeam03</span>?
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Built for privacy, designed for simplicity. Experience file sharing
+            the way it should be.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <div
+              key={feature.title}
+              className="glass-card rounded-2xl border border-neutral-300 dark:border-neutral-800 p-6 hover:border-neutral-300 dark:hover:border-neutral-700  transition-all duration-300 hover:-translate-y-1 group"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4  transition-colors">
+                <feature.icon className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
+
+export default FeatureGrid;
