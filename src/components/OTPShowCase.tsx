@@ -47,7 +47,7 @@ const OTPShowcase = () => {
             </h2>
 
             <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-6 leading-relaxed">
-              Every transfer generates a unique 6-digit code that expires in 10
+              Every transfer generates a unique 4-digit code that expires in 10
               minutes. Share it securely for instant access.
             </p>
 

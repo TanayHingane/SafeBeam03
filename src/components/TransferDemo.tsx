@@ -112,7 +112,7 @@ const TransferDemo = () => {
               Send Files in <span className="gradient-text">Seconds</span>
             </h2>
             <p className="text-muted-foreground text-base md:text-lg mb-8 leading-relaxed">
-              Drag and drop any file, get a secure 6-digit code, share it with
+              Drag and drop any file, get a secure 4-digit code, share it with
               anyone. It&apos;s that simple. No uploads to servers, no waiting,
               no limits.
             </p>
@@ -135,7 +135,7 @@ const TransferDemo = () => {
                 <div>
                   <h4 className="font-semibold mb-1">Get your OTP</h4>
                   <p className="text-muted-foreground text-sm">
-                    A unique 6-digit code is generated instantly
+                    A unique 4-digit code is generated instantly
                   </p>
                 </div>
               </div>
