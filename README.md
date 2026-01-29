@@ -105,3 +105,4 @@ This project is licensed under the **MIT License**.
 ## 📬 Contact
 
 Created by [Tanay Hingane](https://github.com/TanayHingane) – feel free to reach out or contribute!
+If any query, Mail me at [safebeam03@gmail.com](safebeam03@gmail.com)
