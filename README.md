@@ -1,83 +1,98 @@
-# SafeBeam
+# 🚀 SafeBeam — Secure One-Time File & Text Sharing (No Signup)
 
-**SafeBeam** is a modern, secure, and user-friendly file transfer platform built using [Next.js](https://nextjs.org/). It provides a streamlined interface for users to share and manage files effortlessly, with support for real-time previews, video, and interactive dashboards.
+**SafeBeam** is a fast, secure, and privacy-focused web application that allows users to **send files or text instantly using a one-time OTP valid for 10 minutes**.  
+No sign-up, no device limits, and no permanent links — works seamlessly across all platforms.
+
+🌍 **Live Website:** https://safebeam03.vercel.app/  
+💻 **GitHub Repository:** https://github.com/TanayHingane/SafeBeam03
 
 ![Dashboard Preview](./public/heroImg.png)
 
 ---
 
+## 🔥 Why SafeBeam?
+
+Traditional file-sharing platforms often require:
+- Account creation
+- App installation
+- Email verification
+- Long-lived or permanent links
+
+**SafeBeam removes all unnecessary friction** and focuses on speed, simplicity, and security.
+
+✅ One-time OTP access  
+✅ Auto-expiry after 10 minutes  
+✅ No login required  
+✅ All file types supported  
+✅ Works on any device or browser  
+
+---
+
 ## ✨ Features
 
-- 🔐 Secure and private file transfer
-- 🌓 Light/Dark mode support
-- ⚙️ Built with TypeScript, Tailwind CSS, and Next.js App Router
-- 🌐 Fast performance with optimized static assets
-- 🧠 Context API for state management (`TransferContext.tsx`)
+- 🔐 **One-Time OTP Security**  
+  Each transfer generates a unique OTP that expires automatically after **10 minutes**
+
+- ⚡ **Instant File & Text Sharing**  
+  Share documents, images, videos, ZIPs, or quick text notes instantly
+
+- 🧠 **No Signup Required**  
+  Completely anonymous usage — no accounts, no emails, no tracking
+
+- 🌍 **Cross-Platform Compatibility**  
+  Works on mobile, desktop, tablet, and all modern browsers
+
+- 📁 **Supports All File Types**  
+  PDFs, images, videos, code files, archives, and more
+
+- 🌓 **Light & Dark Mode**  
+  Clean, modern UI with theme support
+
+- 🚀 **High Performance**  
+  Built with Next.js App Router and optimized static assets
 
 ---
 
-## 🚀 Getting Started
+## 🛡️ Security & Privacy
 
-### Prerequisites
+SafeBeam is designed with **privacy-first principles**:
 
-- Node.js (v18+ recommended)
-- npm, yarn, pnpm, or bun
+- OTPs auto-expire after **10 minutes**
+- No permanent links
+- No stored user identity
+- No device or platform restrictions
+- Minimal data retention
 
-### Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/TanayHingane/SafeBeam.git
-cd SafeBeam
-```
-
-Install dependencies:
-
-```bash
-npm install
-# or
-yarn install
-```
-
-### Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
----
-
-## 🧩 Project Structure
-
-```
-SafeBeam/
-├── public/               # Static assets (images, videos, icons)
-├── contexts/             # React Context API files
-├── src/                  # Components and pages
-├── starter-for-nextjs/   # Optional template/starter code
-├── .gitignore
-├── next.config.ts
-├── package.json
-├── tsconfig.json
-└── README.md
-```
+Ideal for:
+- Sensitive document sharing
+- One-time file transfers
+- Temporary access use cases
+- Secure personal or professional sharing
 
 ---
 
 ## 🛠️ Technologies Used
 
-- [Next.js 14+ (App Router)](https://nextjs.org)
-- [React 18](https://reactjs.org)
-- [Tailwind CSS](https://tailwindcss.com)
-- TypeScript
-- Context API
+- **Next.js 14+ (App Router)**
+- **React 18**
+- **TypeScript**
+- **Tailwind CSS**
+- **Context API**
+
+---
+
+## 🧩 Project Structure
+
+SafeBeam03/
+├── public/ # Static assets (images, icons)
+├── contexts/ # Context API state management
+├── src/ # Components and pages
+├── starter-for-nextjs/ # Optional starter template
+├── .gitignore
+├── next.config.ts
+├── tsconfig.json
+├── package.json
+└── README.md
 
 ---
 
@@ -89,20 +104,42 @@ SafeBeam/
 
 ---
 
+## 🌟 Use Cases
+
+- **Send files between phone and laptop**
+- **Share sensitive documents securely**
+- **Temporary client file sharing**
+- **One-time access links**
+- **Quick text or code snippet sharing**
+
+---
+
+## 🤝 Contributing
+
+**Contributions are welcome!
+If you have ideas to improve security, UI, or performance, feel free to:**
+
+- **Fork the repository**
+- **Create a new branch**
+- **Submit a pull request 🚀**
+
+---
+
 ## 📄 License
 
-This project is licensed under the **MIT License**.
+**This project is licensed under the MIT License.**
 
 ---
 
-## 🙏 Acknowledgments
+##📬 Contact
 
-- Inspired by modern dashboard UI/UX designs
-- Built using the official [Next.js](https://nextjs.org/) starter
+**👨‍💻 Created by: Tanay Hingane**
+**📧 Email: safebeam03@gmail.com**
 
 ---
 
-## 📬 Contact
+##If you find this project useful:
 
-Created by [Tanay Hingane](https://github.com/TanayHingane) – feel free to reach out or contribute!
-If any query, Mail me at [safebeam03@gmail.com](safebeam03@gmail.com)
+- **⭐ Star the repository**
+- **🔁 Share it with others**
+- **🧵 Post about it on LinkedIn / Twitter**
