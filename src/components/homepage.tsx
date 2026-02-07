@@ -1,7 +1,6 @@
-import { FiGithub } from "react-icons/fi";
 import FeatureGrid from "./Benefits";
 import { Origin } from "./Origin";
-import { Shield, Zap } from "lucide-react";
+import { Save, Shield, Zap } from "lucide-react";
 import OTPShowcase from "./OTPShowCase";
 import TransferDemo from "./TransferDemo";
 
@@ -15,7 +14,7 @@ const SafeBeamHomepage = () => {
         <div className="container mx-auto lg:mx-20 text-center relative z-10 px-4">
           <span className="text-3xl md:text-7xl py-24 font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
             <span className="relative">
-              SafeBeam
+              SafeBeam03
               <span className="absolute bottom-0 sm:-bottom-1 left-0 right-0 h-2 sm:h-3 bg-blue-400 dark:bg-blue-500 -z-10 transform -rotate-1"></span>
             </span>
             {" -"} Secure,
@@ -28,18 +27,18 @@ const SafeBeamHomepage = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-20 mt-10 md:mt-0">
             <a href="/transfer">
               <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-5 md:px-8 text-xs md:text-base rounded-full transition-transform transform hover:scale-105">
-                Try SafeBeam Now
+                Try SafeBeam03 Now
               </button>
             </a>
             <a
-              href="https://github.com/TanayHingane/SafeBeam03"
+              href="https://safestore03.vercel.app"
               className=""
               target="_blank"
               rel="noopener noreferrer"
             >
               {" "}
               <button className="border-2 border-gray-300 hover:bg-gray-100 text-gray-700 dark:border-gray-600 text-xs md:text-base dark:hover:bg-gray-800 dark:text-gray-300 font-bold py-3 px-5 md:px-8 rounded-full transition flex items-center gap-2">
-                <FiGithub /> View on GitHub
+                <Save /> Save Files
               </button>
             </a>
           </div>

@@ -7,7 +7,7 @@ export const Origin = () => (
     <div className="max-w-4xl mx-auto">
       <div className="text-center">
         <h2 className="text-xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-          The Spark Behind SafeBeam
+          The Spark Behind SafeBeam03
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
           This project was born from a simple, recurring frustration.
@@ -60,7 +60,7 @@ export const Origin = () => (
             too!.&quot;
           </p>
           <p className="text-right font-bold text-gray-800 dark:text-gray-200">
-            - Tanay Hingane, <br /> Creator of SafeBeam
+            - Tanay Hingane, <br /> Creator of SafeBeam03
           </p>
         </motion.div>
       </div>

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 
-import { Download, HomeIcon, RefreshCcw, Send, UsersIcon } from "lucide-react";
+import { Download, RefreshCcw, Save, Send, UsersIcon } from "lucide-react";
 import GitHubStarButton from "@/components/github-star-button";
 
 import ThemeToggle from "@/components/theme-toggle";
@@ -25,7 +25,7 @@ import { Button } from "./ui/button";
 
 // Navigation links with icons for desktop icon-only navigation
 const navigationLinks = [
-  { href: "/", label: "Home", icon: HomeIcon, active: true },
+  { href: "https://safestore03.vercel.app", label: "Save Files", icon: Save },
   { href: "/transfer", label: "Send", icon: Send },
   { href: "/transfer/#receive-data", label: "Receive", icon: Download },
   { href: "/contact", label: "Contact", icon: UsersIcon },

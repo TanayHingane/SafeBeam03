@@ -20,7 +20,7 @@ export default function ContactPage() {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("safebeam@example.com");
+    navigator.clipboard.writeText("safebeam03@gmail.com");
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false);
@@ -71,7 +71,7 @@ export default function ContactPage() {
                         type="email"
                         autoComplete="email"
                         required
-                        placeholder="abcde@example.com"
+                        placeholder="safebeam03@gmail.com"
                       />
                     </div>
                   </div>

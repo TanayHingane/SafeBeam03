@@ -17,7 +17,7 @@ const Footer = () => {
               </Link>
             </div>
             <p className="text-foreground/70 max-w-md mb-6">
-              SafeBeam is a secure and fast way to send and receive text or
+              SafeBeam03 is a secure and fast way to send and receive text or
               files using unique 4-digit IDs. It&apos;s perfect for sharing
               secured data.
             </p>
@@ -27,7 +27,9 @@ const Footer = () => {
             <nav className="flex flex-col space-y-2">
               <FooterLink href="/transfer">Send</FooterLink>
               <FooterLink href="/transfer#receive-data">Receive</FooterLink>
-              <FooterLink href="#pricing">Pricing</FooterLink>
+              <FooterLink href="https://safestore03.vercel.app">
+                Save Files
+              </FooterLink>
             </nav>
           </div>
 
@@ -40,8 +42,8 @@ const Footer = () => {
               <FooterLink href="https://tanayhingane03.vercel.app/">
                 Portfolio
               </FooterLink>
-              <FooterLink href="mailto:tanayhingane03@gmail.com?subject=Hello%20I%27m%20____%20from%20____%20company&body=I%20want%20to%20start%20a%20new%20project%20about%20____%20and%20time%20duration%20is%20___%20days.">
-                Contact
+              <FooterLink href="https://github.com/TanayHingane/SafeBeam03">
+                GitHub
               </FooterLink>
             </nav>
           </div>
@@ -49,7 +51,7 @@ const Footer = () => {
 
         <div className="border-t border-t-neutral-200 dark:border-t-neutral-900 pt-8 ">
           <div className="text-foreground/60 text-center text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} SafeBeam. Created by{" "}
+            © {new Date().getFullYear()} SafeBeam03. Created by{" "}
             <Link
               href={"https://tanayhingane03.vercel.app/"}
               className="hover:underline hover:underline-offset-4 font-semibold"
