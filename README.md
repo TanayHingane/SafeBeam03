@@ -83,16 +83,16 @@ Ideal for:
 
 ## 🧩 Project Structure
 
-SafeBeam03/
-├── public/ # Static assets (images, icons)
-├── contexts/ # Context API state management
-├── src/ # Components and pages
-├── starter-for-nextjs/ # Optional starter template
-├── .gitignore
-├── next.config.ts
-├── tsconfig.json
-├── package.json
-└── README.md
+SafeBeam03/ <br>
+├── public/ # Static assets (images, icons)<br>
+├── contexts/ # Context API state management<br>
+├── src/ # Components and pages<br>
+├── starter-for-nextjs/ # Optional starter template<br>
+├── .gitignore<br>
+├── next.config.ts<br>
+├── tsconfig.json<br>
+├── package.json<br>
+└── README.md<br>
 
 ---
 
