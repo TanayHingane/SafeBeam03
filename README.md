@@ -131,14 +131,14 @@ If you have ideas to improve security, UI, or performance, feel free to:**
 
 ---
 
-##📬 Contact
+## 📬 Contact
 
-**👨‍💻 Created by: Tanay Hingane**
+**👨‍💻 Created by: Tanay Hingane**<br>
 **📧 Email: safebeam03@gmail.com**
 
 ---
 
-##If you find this project useful:
+## If you find this project useful:
 
 - **⭐ Star the repository**
 - **🔁 Share it with others**
