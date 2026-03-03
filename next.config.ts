@@ -6,6 +6,10 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
+  trailingSlash: true,
+  images: {
+    unoptimized: true, // Common requirement for Netlify static exports
+  },
 };
 
 export default nextConfig;
