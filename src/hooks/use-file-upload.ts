@@ -52,14 +52,14 @@ export type FileUploadActions = {
   handleFileChange: (e: ChangeEvent<HTMLInputElement>) => void;
   openFileDialog: () => void;
   getInputProps: (
-    props?: InputHTMLAttributes<HTMLInputElement>
+    props?: InputHTMLAttributes<HTMLInputElement>,
   ) => InputHTMLAttributes<HTMLInputElement> & {
     ref: React.Ref<HTMLInputElement>;
   };
 };
 
 export const useFileUpload = (
-  options: FileUploadOptions = {}
+  options: FileUploadOptions = {},
 ): [FileUploadState, FileUploadActions] => {
   const {
     maxFiles = Infinity,
@@ -88,13 +88,13 @@ export const useFileUpload = (
       if (file instanceof File) {
         if (file.size > maxSize) {
           return `File "${file.name}" exceeds the maximum size of ${formatBytes(
-            maxSize
+            maxSize,
           )}.`;
         }
       } else {
         if (file.size > maxSize) {
           return `File "${file.name}" exceeds the maximum size of ${formatBytes(
-            maxSize
+            maxSize,
           )}.`;
         }
       }
@@ -109,7 +109,7 @@ export const useFileUpload = (
         }`;
 
         const isAccepted = acceptedTypes.some((type) => {
-          if (typeof type === "string" && type.startsWith(".")) {
+          if (typeof type === "string" && type?.startsWith(".")) {
             return fileExtension.toLowerCase() === type.toLowerCase();
           }
 
@@ -117,7 +117,7 @@ export const useFileUpload = (
             const baseType = type.split("/")[0];
             return (
               typeof fileType === "string" &&
-              fileType.startsWith(`${baseType}/`)
+              fileType?.startsWith(`${baseType}/`)
             );
           }
 
@@ -133,7 +133,7 @@ export const useFileUpload = (
 
       return null;
     },
-    [accept, maxSize]
+    [accept, maxSize],
   );
 
   const createPreview = useCallback(
@@ -143,7 +143,7 @@ export const useFileUpload = (
       }
       return file.url;
     },
-    []
+    [],
   );
 
   const generateUniqueId = useCallback((file: File | FileMetadata): string => {
@@ -163,7 +163,7 @@ export const useFileUpload = (
           file.preview &&
           file.file instanceof File &&
           typeof file.file.type === "string" &&
-          file.file.type.startsWith("image/")
+          file.file.type?.startsWith("image/")
         ) {
           URL.revokeObjectURL(file.preview);
         }
@@ -218,7 +218,7 @@ export const useFileUpload = (
           const isDuplicate = state.files.some(
             (existingFile) =>
               existingFile.file.name === file.name &&
-              existingFile.file.size === file.size
+              existingFile.file.size === file.size,
           );
 
           // Skip duplicate files silently
@@ -232,9 +232,9 @@ export const useFileUpload = (
           errors.push(
             multiple
               ? `File "${file.name}" exceed the maximum size of ${formatBytes(
-                  maxSize
+                  maxSize,
                 )}.`
-              : `File exceeds the maximum size of ${formatBytes(maxSize)}.`
+              : `File exceeds the maximum size of ${formatBytes(maxSize)}.`,
           );
           return;
         }
@@ -290,7 +290,7 @@ export const useFileUpload = (
       clearFiles,
       onFilesChange,
       onFilesAdded,
-    ]
+    ],
   );
 
   const removeFile = useCallback(
@@ -302,7 +302,7 @@ export const useFileUpload = (
           fileToRemove.preview &&
           fileToRemove.file instanceof File &&
           typeof fileToRemove.file.type === "string" &&
-          fileToRemove.file.type.startsWith("image/")
+          fileToRemove.file.type?.startsWith("image/")
         ) {
           URL.revokeObjectURL(fileToRemove.preview);
         }
@@ -317,7 +317,7 @@ export const useFileUpload = (
         };
       });
     },
-    [onFilesChange]
+    [onFilesChange],
   );
 
   const clearErrors = useCallback(() => {
@@ -370,7 +370,7 @@ export const useFileUpload = (
         }
       }
     },
-    [addFiles, multiple]
+    [addFiles, multiple],
   );
 
   const handleFileChange = useCallback(
@@ -379,7 +379,7 @@ export const useFileUpload = (
         addFiles(e.target.files);
       }
     },
-    [addFiles]
+    [addFiles],
   );
 
   const openFileDialog = useCallback(() => {
@@ -399,7 +399,7 @@ export const useFileUpload = (
         ref: inputRef,
       };
     },
-    [accept, multiple, handleFileChange]
+    [accept, multiple, handleFileChange],
   );
 
   return [
