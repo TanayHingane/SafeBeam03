@@ -66,6 +66,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-398X38N7FN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-398X38N7FN');
+</script>
         <meta
           name="google-site-verification"
           content="BbWKkb9nYRja3XHwtN7JOnQmxh4AQo1Rea5eWW1Zueo"
