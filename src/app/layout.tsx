@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import { TransferProvider } from "../../contexts/TransferContext";
 import { RefreshProvider } from "../components/refreshcontext";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -66,15 +67,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-398X38N7FN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-398X38N7FN"
+          strategy="afterInteractive"
+        />
 
-  gtag('config', 'G-398X38N7FN');
-</script>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-398X38N7FN');
+  `}
+        </Script>
         <meta
           name="google-site-verification"
           content="BbWKkb9nYRja3XHwtN7JOnQmxh4AQo1Rea5eWW1Zueo"
