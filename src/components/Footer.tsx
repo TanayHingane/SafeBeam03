@@ -39,7 +39,7 @@ const Footer = () => {
               <FooterLink href="https://linkedin.com/in/tanayhingane">
                 LinkedIn
               </FooterLink>
-              <FooterLink href="https://tanayhingane03.vercel.app/">
+              <FooterLink href="https://tanayh03.vercel.app/">
                 Portfolio
               </FooterLink>
               <FooterLink href="https://github.com/TanayHingane/SafeBeam03">
@@ -53,7 +53,7 @@ const Footer = () => {
           <div className="text-foreground/60 text-center text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} SafeBeam03. Created by{" "}
             <Link
-              href={"https://tanayhingane03.vercel.app/"}
+              href={"https://tanayh03.vercel.app/"}
               className="hover:underline hover:underline-offset-4 font-semibold"
             >
               Tanay Hingane
